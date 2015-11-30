@@ -7,6 +7,7 @@ class CreatePets < ActiveRecord::Migration
       t.integer :age, null: false 
       t.string :description, null: false
       t.boolean :present, default: true, null: false
+      
       t.timestamps null: false
     end
   end
