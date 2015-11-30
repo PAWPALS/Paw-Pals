@@ -26,7 +26,7 @@ def create
        @user.destroy
        render json: {success: "Delete success!"}
     else
-      render json: { error: "Invalid username (#{params[:email]}) or password." },
+      render json: { error: "Invalid email (#{params[:email]}) or password." },
         status: :unauthorized
     end
   end
