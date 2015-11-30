@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
 def create
     @user = User.new(email: params[:email],
-                     password_digest: params[:password])
+                     password: params[:password])
     if @user.save
       render "create.json.jbuilder", status: :created
     else
