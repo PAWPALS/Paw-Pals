@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
+# use postgresql for database 
+gem 'pg'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,7 +27,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# Add support for file uploads with paperclip 
+gem 'paperclip', '~> 4.3'
+
+# Store uploads on Amazon S3 
+gem 'aws-sdk-v1'
+
+# Use foreman to setup environment variables to run the app 
+gem 'foreman'
+
+# Use rack-cors to make cross domain ajax calls
+gem 'rack-cors'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -35,6 +50,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'sqlite3'
+
+  # use Rspec for testing
+  gem 'rspec-rails'
+
+  # use factory girl build models and attributes 
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -43,5 +65,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # pry is awesome 
+  gem 'pry'
+end
+
+  group :production do 
+    gem 'rails_12factor'
+    gem 'puma'
 end
 
