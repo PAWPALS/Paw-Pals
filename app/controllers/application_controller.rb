@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   helper_method :current_user
-  before_action :json_defaults 
 
   rescue_from ActiveRecord::RecordNotFound do |error|
     render json: { error: "Could not find object: #{error.message}" },
@@ -23,10 +22,6 @@ class ApplicationController < ActionController::Base
        render json: { error: "Could not authenticate with token:'#{token}'" },
         status: :unauthorized
     end
-  end
-
-  def json_defaults 
-    request.format = json unless params[:format]
   end
 end
 
