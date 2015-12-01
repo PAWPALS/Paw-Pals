@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
-def create
+  before_action :authenticate_user!
+
+  def create
     @user = User.new(email: params[:email],
                      password: params[:password])
     if @user.save
