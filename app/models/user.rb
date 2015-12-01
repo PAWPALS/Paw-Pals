@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_access_token!
 
-  validates_presence_of :username
-  validates_uniqueness_of :email, :username
+  validates_presence_of :email
+  validates_uniqueness_of :email
   validates_format_of :email, with: /.+@.+\..+/
   validates :access_token, presence: true, uniqueness: true
 
