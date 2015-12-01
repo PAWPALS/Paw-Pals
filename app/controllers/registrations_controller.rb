@@ -21,7 +21,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @user = User.find_by!(email: params[:email])
     if @user && @user.authenticate(params[:password])
        @user.destroy
