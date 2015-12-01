@@ -6,9 +6,8 @@ class PetsController < ApplicationController
                   breed: params[:breed],
                   age: params[:age],
                   description: params[:description],
-                  present: params[:present]
+                  present: params[:present],
                   user_id: current_user.id)
-                  }
     if @pet.save
       render "create.json.jbuilder", status: :created
     else
@@ -23,6 +22,8 @@ class PetsController < ApplicationController
   end
 
   def users_index
+    @pets = Pet.where(user_id: params[:id])
+    render "users_index.json.jbuilder", status: :accepted
   end
 
 
