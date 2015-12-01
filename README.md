@@ -104,11 +104,14 @@ If the pet was created successfully, you should receive status code 201 and ...
 If the pet could not be created, you should receive status code 422 and ...
 
 `{
-    "errors": [
-        "This could be a variety of errors"
-       ]
+  "errors": [
+    "Name can't be blank",
+    "Breed can't be blank",
+    "Age can't be blank",
+    "Description can't be blank",
+    "Present can't be blank"
+  ]
 }`
-
 
 
 ## Index of Pets
