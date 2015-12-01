@@ -218,13 +218,19 @@ If delete was successful, you should receive status code 202 and ...
 
 `{success: "Pet delete successful!"}`
 
-## Update Pet Status
+If delete was unsuccessful, you should receive status code 401 and ...
+
+`{
+"Unable to delete the pet."
+}`
+
+## Update Pet Status and or Picture
  
 ### PUT `/pets/:pet_id`
 
 #### Params:
 
-`pet_id:` Must provide a deck id to update an individual deck. `present:` True or False.  
+`pet_id:` Must provide a deck id to update an individual deck. `present:` True or False. `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
 
 
 #### Response:
@@ -232,7 +238,14 @@ If delete was successful, you should receive status code 202 and ...
 If update was successful, you should receive status code 202 and ...
 
 `{
-  "success": "Pet status update successful!"
+  "success": "Pet status and or picture update successful!"
+}`
+
+If update was unsuccessful, you should receive status code 401 and ...
+
+
+`{
+"Unable to edit pets status and or picture."
 }`
 
 
