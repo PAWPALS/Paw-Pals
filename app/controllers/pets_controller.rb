@@ -7,6 +7,7 @@ class PetsController < ApplicationController
                   age: params[:age],
                   description: params[:description],
                   present: params[:present],
+                  avatar: params[:picture],
                   user_id: current_user.id)
     if @pet.save
       render "create.json.jbuilder", status: :created
@@ -46,10 +47,10 @@ class PetsController < ApplicationController
   def update
    @pet = Pet.find(params[:pet_id])
     if @pet && current_user.id == @pet.user_id
-     @pet.update(present: params[:present])
-     render json: {success: "Pet status update successful!"}, status: :accepted
+     @pet.update(present: params[:present], avatar: params[:picture])
+     render json: {success: "Pet status and or picture update successful!"}, status: :accepted
     else
-      render json: { error: "Unable to edit pets status." },    
+      render json: { error: "Unable to edit pets status and or picture." },    
             status: :unauthorized   
     end
   end
