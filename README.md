@@ -84,7 +84,7 @@ If the user could not be logged in, you should receive status code 401 and ...
 ### POST `/pets`
 
 #### Params:
-`name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. `present:` Must state either true or false in regards to the pet being lost or present.
+`name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. `present:` Must state either true or false in regards to the pet being lost or present. `picture:` Optional profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
 
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
@@ -92,12 +92,13 @@ If the pet was created successfully, you should receive status code 201 and ...
 `{
   "pet": {
     "user_id": 4,
-    "pet_id": 1,
-    "name": "Tex",
-    "age": 12,
-    "breed": "golden retriever ",
-    "description": "cutest dog ever ",
-    "present": true
+    "pet_id": 10,
+    "name": "biblo",
+    "age": 8,
+    "breed": "unsure",
+    "description": "ugliest dog ever",
+    "present": true,
+    "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
 }`
 
