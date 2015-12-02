@@ -276,7 +276,7 @@ If update was unsuccessful, you should receive status code 401 and ...
 ### POST `/addresses`
 
 #### Params:
-` street address:` Must provide a street address. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+` street_address:` Must provide a street_address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
 
 #### Response:
 If the address was created successfully, you should receive status code 201 and ...
@@ -296,7 +296,7 @@ If the address could not be created, you should receive status code 422 and ...
 
 `{
   "errors": [
-    "Street address can't be blank",
+    "Street_address can't be blank",
     "City can't be blank",
     "Sate can't be blank",
     "Zip can't be blank"
@@ -309,7 +309,7 @@ If the address could not be created, you should receive status code 422 and ...
 
 #### Params: none
 
-Will return all users addresses with their associated `user id`, `address id`, `street address`, `city`, `state` and `zip`.
+Will return all users addresses with their associated `user id`, `address id`, `street_address`, `city`, `state` and `zip`.
 
 #### Response: 
 
@@ -370,7 +370,7 @@ If successfull, you should receive status code 202 and ...
 
 `user_id:` Must provide the users id. 
 
-Will return a specific users address with it's user id, address id, street address, city, state and zip.
+Will return a specific users address with it's user id, address id, street_address, city, state and zip.
 
 #### Response: 
 
@@ -413,14 +413,14 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 #### Params:
 
-` street address:` Must provide a street address. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+` street address:` Must provide a street_address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
 
 #### Response:
 
 If update was successful, you should receive status code 202 and ...
 
 `{
-  "success": ""Street address: New Address, City: New City, State: New State, Zip: New Zip"
+  "success": ""Street_address: New Address, City: New City, State: New State, Zip: New Zip"
 }`
 
 If update was unsuccessful, you should receive status code 401 and ...
