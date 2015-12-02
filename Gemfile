@@ -32,6 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Add support for file uploads with paperclip 
 gem 'paperclip', '~> 4.3'
 
+# Add geocoder to handle location related data 
+gem 'geocoder'
+
 # Store uploads on Amazon S3 
 gem 'aws-sdk-v1'
 

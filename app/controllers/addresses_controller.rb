@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController 
+  before_action :authenticate_user!, only: [:create, :destroy, :update]
 
   def create
     @address = Address.new(address: params[:street_address],
