@@ -80,6 +80,7 @@ If the user could not be logged in, you should receive status code 401 and ...
 
 `{"error": "Could not find user for rmcwilliam@gmail.com or wrong password."}`
 
+
 ## Register a Pet
 ### POST `/pets`
 
@@ -155,7 +156,7 @@ If query was successfully, you should receive status code 202 and ...
 `pet_id:` Must provide the pets id to retrieve an individual pet.
 
 #### Response:
-If successfully, you should receive status code 202 and ...
+If query was successfull, you should receive status code 202 and ...
 
 `{
   "pet": {
@@ -225,7 +226,6 @@ If delete was unsuccessful, you should receive status code 401 and ...
 }`
 
 ## Update Pet Status and or Picture
- 
 ### PUT `/pets/:pet_id`
 
 #### Params:
@@ -247,6 +247,177 @@ If update was unsuccessful, you should receive status code 401 and ...
 `{
 "Unable to edit pets status and or picture."
 }`
+
+
+## Register an Address
+### POST `/addresses`
+
+#### Params:
+` street address:` Must provide a street address. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+
+#### Response:
+If the address was created successfully, you should receive status code 201 and ...
+
+`{
+  "address": {
+    "user_id": 4,
+    "address_id": 3,
+    "street_address": "123 Street NE",
+    "city": "Atlanta",
+    "state": "Ga",
+    "zip": 30080
+  }
+}`
+
+If the address could not be created, you should receive status code 422 and ...
+
+`{
+  "errors": [
+    "Street address can't be blank",
+    "City can't be blank",
+    "Sate can't be blank",
+    "Zip can't be blank"
+  ]
+}`
+
+
+## Index of all Users Addresses
+### GET `/addresses`
+
+#### Params: none
+
+Will return all users addresses with their associated user id, address id, street address, city, state and zip.
+
+#### Response: 
+
+If query was successfully, you should receive status code 202 and ...
+
+`{
+  "addresses": [
+    {
+      "user_id": 2,
+      "address_id": 1,
+      "street_address": "123 Street NE",
+      "city": "Smyrna",
+      "state": "Ga",
+      "zip": 30080
+    },
+    {
+      "user_id": 3,
+      "address_id": 2,
+      "street_address": "786 Street SE",
+      "city": "Atlanta",
+      "state": "Ga",
+      "zip": 30080
+    },
+    {
+      "user_id": 4,
+      "address_id": 3,
+      "street_address": "4456 Bay Court",
+      "city": "Marietta",
+      "state": "Ga",
+      "zip": 30060
+  ]
+}`
+
+## Show Single Address
+### GET `/addresses/:address_id`
+
+#### Params:
+`address_id:` Must provide the address id to retrieve an individual address.
+
+#### Response:
+If successfull, you should receive status code 202 and ...
+
+`{
+  "address": {
+    "user_id": 4,
+    "address_id": 1,
+    "street_address": "123 Street NE",
+    "city": "Smyrna",
+    "state": "Ga",
+    "zip": 30080
+  }
+}`
+
+## Show particular Users Address 
+### GET `/users/:id/addresses`
+
+#### Params: 
+
+`user_id:` Must provide the users id. 
+
+Will return a specific users address with it's user id, address id, street address, city, state and zip.
+
+#### Response: 
+
+If query was successful, you should receive status code 202 and ...
+
+`{
+  "address": {
+    "user_id": 4,
+    "address_id": 1,
+    "street_address": "123 Street NE",
+    "city": "Smyrna",
+    "state": "Ga",
+    "zip": 30080
+  }
+}`
+
+
+## Delete an Address 
+### DELETE `/addresses/:address_id`
+
+#### Params:
+
+`address_id:` Must provide an address id to delete an individual address.
+
+#### Response:
+
+If delete was successful, you should receive status code 202 and ...
+
+`{success: "Address delete successful!"}`
+
+If delete was unsuccessful, you should receive status code 401 and ...
+
+`{
+"Unable to delete the Address."
+}`
+
+
+## Update Address  
+### PUT `/addresses/:address_id`
+
+#### Params:
+
+` street address:` Must provide a street address. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+
+#### Response:
+
+If update was successful, you should receive status code 202 and ...
+
+`{
+  "success": ""Street address: New Address, City: New City, State: New State, Zip: New Zip"
+}`
+
+If update was unsuccessful, you should receive status code 401 and ...
+
+
+`{
+"Unable to edit address."
+}`
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
