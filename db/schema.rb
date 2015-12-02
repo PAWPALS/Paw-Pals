@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201163710) do
+ActiveRecord::Schema.define(version: 20151202164001) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151201163710) do
     t.string   "breed",                              null: false
     t.integer  "age",                                null: false
     t.string   "description",                        null: false
-    t.boolean  "present",             default: true, null: false
+    t.boolean  "present",             default: true
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "avatar_file_name"

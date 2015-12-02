@@ -85,7 +85,10 @@ If the user could not be logged in, you should receive status code 401 and ...
 ### POST `/pets`
 
 #### Params:
-`name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. `present:` Must state either true or false in regards to the pet being lost or present. `picture:` Optional profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
+`name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. 
+
+#### Optional Params: 
+`present:` State either true or false in regards to the pet being lost or present. `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
 
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
@@ -102,6 +105,19 @@ If the pet was created successfully, you should receive status code 201 and ...
     "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
 }`
+#### Response without optional params:
+`{
+  "pet": {
+    "user_id": 5,
+    "pet_id": 12,
+    "name": "fido",
+    "age": 8,
+    "breed": "grey hound",
+    "description": "so cool",
+    "present": null,
+    "picture": "/avatars/original/missing.png"
+  }
+}`
 
 If the pet could not be created, you should receive status code 422 and ...
 
@@ -110,8 +126,7 @@ If the pet could not be created, you should receive status code 422 and ...
     "Name can't be blank",
     "Breed can't be blank",
     "Age can't be blank",
-    "Description can't be blank",
-    "Present can't be blank"
+    "Description can't be blank"
   ]
 }`
 
@@ -135,7 +150,8 @@ If query was successfully, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": true
+      "present": true,
+      "picture": "picture.jpg"
     },
     {
       "user_id": 4,
@@ -144,7 +160,8 @@ If query was successfully, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": true
+      "present": true,
+      "picture": "picture.jpg"
     }
   ]
 }`
@@ -166,7 +183,8 @@ If query was successfull, you should receive status code 202 and ...
     "age": 12,
     "breed": "golden retriever ",
     "description": "cutest dog ever ",
-    "present": true
+    "present": true,
+    "picture": "picture.jpg"
   }
 }`
 
@@ -191,7 +209,8 @@ If query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": true
+      "present": true,
+      "picture": "picture.jpg"
     },
     {
       "user_id": 4,
@@ -200,7 +219,8 @@ If query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": true
+      "present": true,
+      "picture": "picture.jpg"
     }
   ]
 }`
@@ -230,7 +250,10 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 #### Params:
 
-`pet_id:` Must provide a deck id to update an individual deck. `present:` True or False. `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
+`pet_id:` Must provide a pet id to update an individual pets status and or picture. 
+
+#### Optional Params:
+`present:` True or False. `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
 
 
 #### Response:
@@ -286,7 +309,7 @@ If the address could not be created, you should receive status code 422 and ...
 
 #### Params: none
 
-Will return all users addresses with their associated user id, address id, street address, city, state and zip.
+Will return all users addresses with their associated `user id`, `address id`, `street address`, `city`, `state` and `zip`.
 
 #### Response: 
 
