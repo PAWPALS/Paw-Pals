@@ -41,6 +41,9 @@ gem 'foreman'
 # Use rack-cors to make cross domain ajax calls
 gem 'rack-cors'
 
+# Add puma to work with foreman
+gem 'puma'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

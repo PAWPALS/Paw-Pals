@@ -6,4 +6,5 @@
  	json.breed @pet.breed
  	json.description @pet.description
  	json.present @pet.present
+ 	json.picture @pet.avatar
  end

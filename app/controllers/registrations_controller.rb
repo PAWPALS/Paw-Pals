@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:email])
+    @user = User.find_by!(email: params[:email])
     if @user && @user.authenticate(params[:password])
       render "login.json.jbuilder", status: :ok
     else
@@ -21,8 +21,8 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def delete
-    @user = User.find_by(email: params[:email])
+  def destroy
+    @user = User.find_by!(email: params[:email])
     if @user && @user.authenticate(params[:password])
        @user.destroy
        render json: {success: "Delete success!"}

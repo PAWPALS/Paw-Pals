@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   post "/signup", to: "registrations#create"
-  delete "/signup", to: "registrations#delete"
+  delete "/signup", to: "registrations#destroy"
 
   post "/login", to: "registrations#login"
 
@@ -19,8 +19,15 @@ Rails.application.routes.draw do
   delete "/pets/:pet_id", to: "pets#destroy"
   put "/pets/:pet_id", to: "pets#update"
 
+  post "/pets/:pet_id/avatar", to: "avatars#create"
+  delete "/pets/:pet_id/avatar", to: "avatars#destroy"
+
   get "/users/:id/pets", to: "pets#users_index"
 
+  resources :addresses do 
+  end
+
+  get "/users/:id/addresses", to: "addresses#users_address"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
