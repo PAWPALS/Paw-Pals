@@ -18,4 +18,9 @@ class PetNoticesController < ApplicationController
     render "show.json.jbuilder", status: :accepted
   end
 
+  def index
+    @pet_notices = PetNotice.where(pet_id: params[:pet_id])
+    render "index.json.jbuilder", status: :accepted 
+  end
+
 end
