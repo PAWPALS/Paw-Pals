@@ -71,8 +71,18 @@ If the login was successful, you should receive status code 200 and ...
 
 `{
   "user": {
-    "email": "ryanmcwilliam@gmail.com",
-    "access_token": "7b35e48054cf6c749714f30f3f7c897c"
+    "email": "rmcwilliam@gmail.com",
+    "access_token": "e1f9292ac0c2a9c5833ba185e55c24d6",
+    "address": {
+      "id": 1,
+      "user_id": 2,
+      "address": "123 Fox Lane",
+      "city": "smyrna",
+      "state": "Georgia ",
+      "zip": 30080,
+      "created_at": "2015-12-04T14:46:38.964Z",
+      "updated_at": "2015-12-04T14:46:38.964Z"
+    }
   }
 }`
 
@@ -276,7 +286,7 @@ If update was unsuccessful, you should receive status code 401 and ...
 ### POST `/addresses`
 
 #### Params:
-` street_address:` Must provide a street_address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+` street_address:` Must provide a street address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
 
 #### Response:
 If the address was created successfully, you should receive status code 201 and ...
@@ -413,7 +423,7 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 #### Params:
 
-` street address:` Must provide a street_address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
+`address_id:` Must provide the address id. `street address:` Must provide a street address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
 
 #### Response:
 
@@ -429,6 +439,99 @@ If update was unsuccessful, you should receive status code 401 and ...
 `{
 "Unable to edit address."
 }`
+
+
+
+## Register a Pets Location 
+### POST `/pet_notices/:pet_id`
+
+#### Params:
+` pet_id:` Must provide the pets id. `longitude:` Must provide longitude value. `latitude:` Must provide latitude value.
+
+#### Response:
+If the location parameters were created/saved successfully, you should receive status code 201 and ...
+
+`{
+  "pet_notice": {
+    "pet_id": 1,
+    "longitude": "34.67",
+    "latitude": "74.567",
+    "created_at": "2015-12-04T18:31:33.248Z"
+  }
+}`
+
+If the location parameters could not be created/stored, you should receive status code 422 and ...
+
+`{
+  "errors": [
+    "Latitude can't be blank",
+    "Longitude can't be blank"
+  ]
+}`
+
+## Show a Pets Most Recent Coordinates 
+### GET `/pet_notices/:pet_id`
+
+#### Params:
+`pet_id:` Must provide the pet id to retrieve the most recent individual set of coordinates for a particular pet.
+
+#### Response:
+If successful, you should receive status code 202 and ...
+
+`{
+  "pet_notice": {
+    "pet_id": 1,
+    "longitude": "34.67",
+    "latitude": "74.567",
+    "created_at": "2015-12-04T18:31:33.248Z"
+  }
+}`
+
+## Index of a Specific Pets Coordinates 
+### GET `/pet_notices/index/:pet_id`
+
+#### Params: none
+
+Will return all of a particular pets coordinates with their associated `pet id`, `longitude`, `latitude` and `created_at` fields.
+
+#### Response: 
+
+If query was successfully, you should receive status code 202 and ...
+
+`{
+  "pet_notices": [
+    {
+      "pet_id": 1,
+      "longitude": "34.67",
+      "latitude": "84.567",
+      "created_at": "2015-12-04T18:30:37.950Z"
+    },
+    {
+      "pet_id": 1,
+      "longitude": "34.67",
+      "latitude": "74.567",
+      "created_at": "2015-12-04T18:30:55.469Z"
+    },
+    {
+      "pet_id": 1,
+      "longitude": "34.67",
+      "latitude": "74.567",
+      "created_at": "2015-12-04T18:31:33.248Z"
+    }
+  ]
+}`
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
