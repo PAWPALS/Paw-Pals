@@ -14,7 +14,7 @@ class PetNoticesController < ApplicationController
   end
 
   def show
-    @pet_notice = PetNotice.find_by!(pet_id: params[:pet_id])
+    @pet_notice = PetNotice.where(pet_id: params[:pet_id]).last
     render "show.json.jbuilder", status: :accepted
   end
 
