@@ -21,6 +21,11 @@ Rails.application.routes.draw do
 
   get "/users/:id/pets", to: "pets#users_index"
 
+  post "/pet_notices/:pet_id", to: "pet_notices#create"
+  get  "/pet_notices/:pet_id", to: "pet_notices#show"
+  get "/pet_notices/index/:pet_id", to: "pet_notices#index"
+  post "/pet_notices/location/:pet_id", to: "pet_notices#enter_location"
+
   resources :addresses do 
   end
 
