@@ -6,7 +6,7 @@ class PetsController < ApplicationController
                   breed: params[:breed],
                   age: params[:age],
                   description: params[:description],
-                  present: params[:present],
+                  present: params[:present] || true,
                   avatar: params[:picture],
                   user_id: current_user.id)
     if @pet.save
@@ -29,12 +29,12 @@ class PetsController < ApplicationController
 
 
   def show
-     @pet = Pet.find(params[:pet_id])
+     @pet = Pet.find_by!(params[:pet_id])
     render "show.json.jbuilder", status: :accepted 
   end
 
   def destroy
-    @pet = Pet.find(params[:pet_id])
+    @pet = Pet.find_by!(params[:pet_id])
      if @pet && current_user.id == @pet.user_id
       @pet.destroy
       render json: {success: "Pet delete successful!"}, status: :accepted 
@@ -45,7 +45,7 @@ class PetsController < ApplicationController
   end
 
   def update
-   @pet = Pet.find(params[:pet_id])
+   @pet = Pet.find_by!(params[:pet_id])
     if @pet && current_user.id == @pet.user_id
      @pet.update(present: params[:present], avatar: params[:picture])
      render json: {success: "Pet status and or picture update successful!"}, status: :accepted

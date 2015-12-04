@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :pets
-  has_one :address
+  has_many :pets, dependent: :destroy 
+  has_one :address, dependent: :destroy 
 
   before_validation :ensure_access_token!
 
