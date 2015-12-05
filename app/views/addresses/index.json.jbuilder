@@ -5,4 +5,6 @@ json.addresses @addresses do |address|
  	json.city address.city
  	json.state address.state
  	json.zip address.zip
+ 	json.latitude address.latitude
+ 	json.longitude address.longitude
  end
