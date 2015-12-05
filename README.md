@@ -72,16 +72,18 @@ If the login was successful, you should receive status code 200 and ...
 `{
   "user": {
     "email": "rmcwilliam@gmail.com",
-    "access_token": "e1f9292ac0c2a9c5833ba185e55c24d6",
+    "access_token": "85ab3e7cd109cea45cd6cd81e44f6659",
     "address": {
-      "id": 1,
-      "user_id": 2,
-      "address": "123 Fox Lane",
+      "id": 11,
+      "user_id": 3,
+      "address": "145 Space lane",
       "city": "smyrna",
-      "state": "Georgia ",
+      "state": "ga",
       "zip": 30080,
-      "created_at": "2015-12-04T14:46:38.964Z",
-      "updated_at": "2015-12-04T14:46:38.964Z"
+      "created_at": "2015-12-05T00:38:53.118Z",
+      "updated_at": "2015-12-05T00:38:53.118Z",
+      "latitude": 33.8806897,
+      "longitude": -84.5064881
     }
   }
 }`
@@ -289,16 +291,18 @@ If update was unsuccessful, you should receive status code 401 and ...
 ` street_address:` Must provide a street address like this(street_address) with underscore. `city:` Must provide a city. `state:` Must provide a state. `zip:` Must provide a zip code. 
 
 #### Response:
-If the address was created successfully, you should receive status code 201 and ...
+Will include longitude and latitude calculated from the submitted address. If the address was created successfully, you should receive status code 201 and ...
 
 `{
   "address": {
-    "user_id": 4,
-    "address_id": 3,
-    "street_address": "123 Street NE",
-    "city": "Atlanta",
+    "user_id": 3,
+    "address_id": 12,
+    "street_address": "167 Bear lane SE",
+    "city": "smyrna",
     "state": "Ga",
-    "zip": 30080
+    "zip": 30080,
+    "longitude": -84.4707229,
+    "latitude": 33.9284603
   }
 }`
 
@@ -309,7 +313,9 @@ If the address could not be created, you should receive status code 422 and ...
     "Street_address can't be blank",
     "City can't be blank",
     "Sate can't be blank",
-    "Zip can't be blank"
+    "Zip can't be blank",
+    "Latitude can't be blank",
+    "Longitude can't be blank"
   ]
 }`
 
@@ -319,7 +325,7 @@ If the address could not be created, you should receive status code 422 and ...
 
 #### Params: none
 
-Will return all users addresses with their associated `user id`, `address id`, `street_address`, `city`, `state` and `zip`.
+Will return all users addresses with their associated `user id`, `address id`, `street_address`, `city`, `state`, `zip`, `latitude`, and `longitude`. 
 
 #### Response: 
 
@@ -328,28 +334,35 @@ If query was successfully, you should receive status code 202 and ...
 `{
   "addresses": [
     {
-      "user_id": 2,
-      "address_id": 1,
-      "street_address": "123 Street NE",
-      "city": "Smyrna",
-      "state": "Ga",
-      "zip": 30080
-    },
-    {
       "user_id": 3,
-      "address_id": 2,
-      "street_address": "786 Street SE",
-      "city": "Atlanta",
+      "address_id": 10,
+      "street_address": "123 Hello lane",
+      "city": "smyrna",
       "state": "Ga",
-      "zip": 30080
+      "zip": 30080,
+      "latitude": 33.8806897,
+      "longitude": -84.5064881
     },
     {
       "user_id": 4,
-      "address_id": 3,
-      "street_address": "4456 Bay Court",
-      "city": "Marietta",
+      "address_id": 11,
+      "street_address": "145 Goodbye lane",
+      "city": "smyrna",
       "state": "Ga",
-      "zip": 30060
+      "zip": 30080,
+      "latitude": 33.8806897,
+      "longitude": -84.5064881
+    },
+    {
+      "user_id": 5,
+      "address_id": 12,
+      "street_address": "167 Bear lane SE",
+      "city": "smyrna",
+      "state": "Ga",
+      "zip": 30080,
+      "latitude": 33.9284603,
+      "longitude": -84.4707229
+    }
   ]
 }`
 
@@ -364,12 +377,14 @@ If successfull, you should receive status code 202 and ...
 
 `{
   "address": {
-    "user_id": 4,
-    "address_id": 1,
-    "street_address": "123 Street NE",
-    "city": "Smyrna",
+    "user_id": 3,
+    "address_id": 10,
+    "street_address": "123 Raptor lane",
+    "city": "smyrna",
     "state": "Ga",
-    "zip": 30080
+    "zip": 30080,
+    "latitude": 33.8806897,
+    "longitude": -84.5064881
   }
 }`
 
@@ -380,7 +395,7 @@ If successfull, you should receive status code 202 and ...
 
 `user_id:` Must provide the users id. 
 
-Will return a specific users address with it's user id, address id, street_address, city, state and zip.
+Will return a specific users address with it's `user id`, `address id`, `street_address`, `city`, `state`, `zip`, `latitude` and `longitude`.
 
 #### Response: 
 
@@ -388,15 +403,16 @@ If query was successful, you should receive status code 202 and ...
 
 `{
   "address": {
-    "user_id": 4,
-    "address_id": 1,
-    "street_address": "123 Street NE",
-    "city": "Smyrna",
+    "user_id": 3,
+    "address_id": 10,
+    "street_address": "678 TRex lane",
+    "city": "smyrna",
     "state": "Ga",
-    "zip": 30080
+    "zip": 30080,
+    "latitude": 33.8806897,
+    "longitude": -84.5064881
   }
 }`
-
 
 ## Delete an Address 
 ### DELETE `/addresses/:address_id`
@@ -427,10 +443,19 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 #### Response:
 
-If update was successful, you should receive status code 202 and ...
+Latitude and Longitude will automatically be re-calculated based on updated address. If update was successful, you should receive status code 202 and ...
 
 `{
-  "success": ""Street_address: New Address, City: New City, State: New State, Zip: New Zip"
+  "address": {
+    "user_id": 3,
+    "address_id": 10,
+    "street_address": "607 Too Cool drive",
+    "city": "Smyrna",
+    "state": Ga,
+    "zip": 33103,
+    "longitude": -84.5064881,
+    "latitude": 33.8806897
+  }
 }`
 
 If update was unsuccessful, you should receive status code 401 and ...
@@ -520,22 +545,6 @@ If query was successfully, you should receive status code 202 and ...
     }
   ]
 }`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -45,8 +45,7 @@ class AddressesController < ApplicationController
    @address = Address.find_by!(params[:address_id])
     if @address && current_user.id == @address.user_id
      @address.update(address: params[:street_address], city: params[:city], state: params[:state], zip: params[:zip])
-     render json: {success: "Street address: #{@address.address}, City: #{@address.city},
-                             State: #{@address.state}, Zip: #{@address.zip}"}, status: :accepted
+     render "update.json.jbuilder", status: :accepted 
     else
       render json: { error: "Unable to edit address." },    
             status: :unauthorized   
