@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
+
 # API 
 
 ##Overview
