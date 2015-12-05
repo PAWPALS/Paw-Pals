@@ -61,6 +61,9 @@ group :development, :test do
   # use Rspec for testing
   gem 'rspec-rails'
 
+  # add shoulda-matchers for one-liners to test rails functionality 
+  gem 'shoulda-matchers', '~> 3.0'
+
   # use factory girl build models and attributes 
   gem 'factory_girl_rails'
 end
