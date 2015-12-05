@@ -14,6 +14,12 @@ RSpec.describe User, type: :model do
   it "is invalid without without password" do
     expect(build(:user, password: nil)).to_not be_valid 
   end
+
+  it {should have_secure_password}
+
+  it {should have_many(:pets)}
+
+  it {should have_one(:address)}
  end
 end
 
