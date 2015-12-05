@@ -8,6 +8,6 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - sqlite3 -e "create database pawpals-test"
+  - sqlite3 "create database pawpals-test"
 
 
