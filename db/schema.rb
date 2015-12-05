@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202164001) do
+ActiveRecord::Schema.define(version: 20151204222946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151202164001) do
     t.integer  "zip",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "latitude",   null: false
+    t.float    "longitude",  null: false
   end
 
   create_table "pet_check_ins", force: :cascade do |t|
