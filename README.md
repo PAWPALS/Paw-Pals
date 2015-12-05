@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rmcwilliam/reddit.svg?branch=master)](http://travis-ci.org/rmcwilliam/reddit)
+[![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
 # API 
 
