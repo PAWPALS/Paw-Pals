@@ -4,4 +4,10 @@ rvm:
 env:
   - DB=sqlite3
 script: 
-  - RAILS_ENV=test bundle exec rake spec 
+  - RAILS_ENV=test bundle exec rake db:migrate --trace 
+  - bundle exec rake db:test:prepare
+  -bundle exec rspec spec/
+before_script:
+  - sqlite3 -e "create database pawpals-test"
+
+
