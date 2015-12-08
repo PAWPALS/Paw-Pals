@@ -1,23 +1,56 @@
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
+ 
 # API 
 
 ##Overview
-Data can be accessed from the "https://pawpals.herokuapp.com/" domain. All requests and responses will formatted as JSON.
+
+Welcome to the pawpals App API. The app allows users to register their pets and keep track of them via help from the user community and positional data. The following documentation will outline how all requests and responses will be handled.  
+
+
+Data can be accessed from the [https://pawpals.herokuapp.com/]("https://pawpals.herokuapp.com/") domain. All requests and responses will formatted as JSON.
 
 
 ## Authentication Notes:
 
-To make an authenticated request in any case other than registering
-or deleting an account, you must supply an `Access-Token` as written in the header along with a valid long string of numbers and letters as the value. Otherwise, you'll receive a 401 Forbidden error.
+To make an authenticated request in any case other than registering a user or logging in you must supply an `Access-Token` as written in the header along with a valid long string of numbers and letters as the value. Otherwise, you'll receive a 401 Forbidden error.
 
 `Example => ['Access-Token'] = '9f5b8ebf876121c3fc4c0fa18a511e16' `
 
-## Registering an Account
+##Table of Contents 
+* [Users](#users)
+     * [register a new user account](#register an account)
+     * [delete a users account](#delete an account)
+     * [login user](#logging in)
+* [Pets](#pets)
+    * [register a new pet](#register a pet)
+    * [index of all users pets](#index of pets)
+    * [show a single pet](#show single pet)
+    * [index of pets for a particular user](#index of users pets)
+    * [delete a pet](#delete a pet)
+    * [update pet status and or picture](#update pet status and or picture)
+* [Addresses](#addresses) 
+    * [register a users address](#register an address)
+    * [index of all users addresses](#index of all users addresses)
+    * [show a specific address](#show single address)
+    * [show a specific users address](#show particular users address)
+    * [delete a users address](#delete an address)
+    * [update a users address](#update address)
+* [Pets Location](#pets location) 
+    * [register a specific pets location](#register a pets location)
+    * [show a specific pets most recent coordinates](#show a pets most recent coordinates)
+    * [index of a specific pets coordinates](#index of a specific pets coordinates)
+    
+    
+    
+    
+##<a name="users"></a>Users
+
+##<a name="register an account"></a>Registering an Account
 
 ### POST `/signup`
 #### Params:
-`email:` Email address must be unique. `Password:` A password.
+`email:`  Email address as string, must be unique. `Password` A password as a string.
 
 #### Response:
 If the user was created successfully, you should receive status code 201 and ...
@@ -38,12 +71,12 @@ If the user could not be created, you should receive status code 422 and ...
        ]
 }`
 
-## Deleting an Account
+##<a name="delete an account"></a>Delete an Account
 ### Delete `/signup`
 
 #### Params:
 
-`email:` User's email. `password:` User's password
+`email:` User's email as a string. `password:` User's password as a string
 
 #### Response:
 
@@ -61,7 +94,7 @@ If the user's account could not be deleted, you should receive status code 401 a
   "error": "Invalid email (rmcwilliam@gmail.com) or password."
 }`
 
-## Logging In
+##<a name="logging in"></a>Logging In
 ### `POST /login`
 
 #### Params:
@@ -94,8 +127,9 @@ If the user could not be logged in, you should receive status code 401 and ...
 
 `{"error": "Could not find user for rmcwilliam@gmail.com or wrong password."}`
 
+##<a name="pets"></a>Pets
 
-## Register a Pet
+##<a name="register a pet"></a>Register a Pet
 ### POST `/pets`
 
 #### Params:
@@ -145,7 +179,7 @@ If the pet could not be created, you should receive status code 422 and ...
 }`
 
 
-## Index of Pets
+##<a name="index of pets"></a>Index of Pets
 ### GET `/pets`
 
 #### Params: none
@@ -180,7 +214,7 @@ If query was successfully, you should receive status code 202 and ...
   ]
 }`
 
-## Show Single Pet
+##<a name="show single pet"></a>Show Single Pet
 ### GET `/pets/:pet_id`
 
 #### Params:
@@ -202,7 +236,7 @@ If query was successfull, you should receive status code 202 and ...
   }
 }`
 
-## Index of Users Pets
+##<a name="index of users pets"></a>Index of Users Pets
 ### GET `/users/:id/pets`
 
 #### Params: 
@@ -240,7 +274,7 @@ If query was successful, you should receive status code 202 and ...
 }`
 
 
-## Delete a Pet 
+##<a name="delete a pet"></a>Delete a Pet 
 ### DELETE `/pets/:pet_id`
 
 #### Params:
@@ -259,7 +293,7 @@ If delete was unsuccessful, you should receive status code 401 and ...
 "Unable to delete the pet."
 }`
 
-## Update Pet Status and or Picture
+##<a name="update pet status and or picture"></a>Update Pet Status and or Picture
 ### PUT `/pets/:pet_id`
 
 #### Params:
@@ -285,8 +319,9 @@ If update was unsuccessful, you should receive status code 401 and ...
 "Unable to edit pets status and or picture."
 }`
 
+##<a name="addresses"></a>Addresses
 
-## Register an Address
+##<a name="register an address"></a>Register an Address
 ### POST `/addresses`
 
 #### Params:
@@ -322,7 +357,7 @@ If the address could not be created, you should receive status code 422 and ...
 }`
 
 
-## Index of all Users Addresses
+##<a name="index of all users addresses"></a>Index of all Users Addresses
 ### GET `/addresses`
 
 #### Params: none
@@ -368,7 +403,7 @@ If query was successfully, you should receive status code 202 and ...
   ]
 }`
 
-## Show Single Address
+##<a name="show single address"></a>Show Single Address
 ### GET `/addresses/:address_id`
 
 #### Params:
@@ -390,7 +425,7 @@ If successfull, you should receive status code 202 and ...
   }
 }`
 
-## Show particular Users Address 
+##<a name ="show particular users address"></a>Show particular Users Address 
 ### GET `/users/:id/addresses`
 
 #### Params: 
@@ -416,7 +451,7 @@ If query was successful, you should receive status code 202 and ...
   }
 }`
 
-## Delete an Address 
+##<a name="delete an address"></a>Delete an Address 
 ### DELETE `/addresses/:address_id`
 
 #### Params:
@@ -436,7 +471,7 @@ If delete was unsuccessful, you should receive status code 401 and ...
 }`
 
 
-## Update Address  
+##<a name="update address"></a>Update Address  
 ### PUT `/addresses/:address_id`
 
 #### Params:
@@ -468,8 +503,9 @@ If update was unsuccessful, you should receive status code 401 and ...
 }`
 
 
+##<a name="pets location"></a>Pets Location
 
-## Register a Pets Location 
+##<a name="register a pets location"></a>Register a Pets Location 
 ### POST `/pet_notices/:pet_id`
 
 #### Params:
@@ -496,7 +532,7 @@ If the location parameters could not be created/stored, you should receive statu
   ]
 }`
 
-## Show a Pets Most Recent Coordinates 
+##<a name="show a pets most recent coordinates"></a>Show a Pets Most Recent Coordinates 
 ### GET `/pet_notices/:pet_id`
 
 #### Params:
@@ -514,7 +550,7 @@ If successful, you should receive status code 202 and ...
   }
 }`
 
-## Index of a Specific Pets Coordinates 
+##<a name="index of a specific pets coordinates"></a>Index of a Specific Pets Coordinates 
 ### GET `/pet_notices/index/:pet_id`
 
 #### Params: none
@@ -547,15 +583,4 @@ If query was successfully, you should receive status code 202 and ...
     }
   ]
 }`
-
-
-
-
-
-
-
-
-
-
-
 
