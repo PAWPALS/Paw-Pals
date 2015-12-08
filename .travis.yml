@@ -1,13 +1,13 @@
 language: ruby
 rvm:
   - 2.2.2
-env:
-  - DB=sqlite3
-script: 
-  - RAILS_ENV=test bundle exec rake db:migrate --trace 
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
-before_script:
-  - sqlite3 "create database pawpals-test"
+# env:
+#   - DB=sqlite3
+# script: 
+#   - RAILS_ENV=test bundle exec rake db:migrate 
+#   - bundle exec rake db:test:prepare
+#   - bundle exec rspec spec/
+# before_script:
+#   - sqlite3 "create database pawpals-test"
 
 
