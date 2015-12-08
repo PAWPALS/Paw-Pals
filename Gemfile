@@ -32,6 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Add support for file uploads with paperclip 
 gem 'paperclip', '~> 4.3'
 
+# Add to support ruby client to use with io.adafruit.com
+gem 'adafruit-io'
+
 #Add faraday to handle to http requests to adafruit io api
 gem 'faraday'
 
@@ -46,9 +49,6 @@ gem 'foreman'
 
 # Use rack-cors to make cross domain ajax calls
 gem 'rack-cors'
-
-# Add puma to work with foreman
-gem 'puma'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -69,6 +69,7 @@ group :development, :test do
 
   # use factory girl build models and attributes 
   gem 'factory_girl_rails'
+
 end
 
 group :development do
