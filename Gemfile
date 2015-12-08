@@ -32,6 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Add support for file uploads with paperclip 
 gem 'paperclip', '~> 4.3'
 
+#Add faraday to handle to http requests to adafruit io api
+gem 'faraday'
+
 # Add geocoder to handle location related data 
 gem 'geocoder'
 
