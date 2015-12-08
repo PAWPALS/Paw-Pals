@@ -4,7 +4,7 @@ rvm:
 env:
   - DB=pawpals_test
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate test
+  - RAILS_ENV=test bundle exec rake db:migrate spec
 before_script:
   - psql -c 'create database pawpals_test' -U postgres
 
