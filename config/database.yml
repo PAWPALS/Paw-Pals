@@ -18,8 +18,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: pawpals-test
+  database: pawpals_test
 
 production:
   <<: *default
-  database: pawpals-production 
+  database: pawpals_production 
