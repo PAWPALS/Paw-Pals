@@ -103,9 +103,11 @@ If the user's account could not be deleted, you should receive status code 401 a
 
 #### Response:
 If the login was successful, you should receive status code 200 and ...
+Note: You will only recieve the address if one has been entered for the user.
 
 `{
   "user": {
+    "id": 4,
     "email": "rmcwilliam@gmail.com",
     "access_token": "85ab3e7cd109cea45cd6cd81e44f6659",
     "address": {
