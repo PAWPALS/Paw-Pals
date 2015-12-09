@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip', '~> 4.3'
 
 # Add to support ruby client to use with io.adafruit.com
-gem 'adafruit-io'
+ gem 'adafruit-io', :git => 'https://github.com/rmcwilliam/io-client-ruby.git'
 
 #Add faraday to handle to http requests to adafruit io api
 gem 'faraday'
@@ -49,6 +49,9 @@ gem 'foreman'
 
 # Use rack-cors to make cross domain ajax calls
 gem 'rack-cors'
+
+# Adafruit io dependency 
+gem 'hashie'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

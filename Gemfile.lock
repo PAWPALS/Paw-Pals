@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/rmcwilliam/io-client-ruby.git
+  revision: e90c67f6cb4b260c31ca61c5dd355b0ac87efb03
+  specs:
+    adafruit-io (1.0.0)
+      activesupport (~> 4.2)
+      addressable (~> 2.3)
+      faraday (~> 0.8)
+      faraday_middleware (~> 0.9)
+      multi_xml (~> 0.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,12 +47,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    adafruit-io (1.0.0)
-      activesupport (~> 4.2)
-      addressable (~> 2.3)
-      faraday (~> 0.8)
-      faraday_middleware (~> 0.9)
-      multi_xml (~> 0.5)
     addressable (2.4.0)
     arel (6.0.3)
     aws-sdk-v1 (1.66.0)
@@ -82,6 +87,7 @@ GEM
     geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashie (3.4.3)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -210,7 +216,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  adafruit-io
+  adafruit-io!
   aws-sdk-v1
   bcrypt (~> 3.1.7)
   byebug
@@ -219,6 +225,7 @@ DEPENDENCIES
   faraday
   foreman
   geocoder
+  hashie
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.3)
