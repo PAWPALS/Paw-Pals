@@ -32,26 +32,17 @@ gem 'bcrypt', '~> 3.1.7'
 # Add support for file uploads with paperclip 
 gem 'paperclip', '~> 4.3'
 
-# Add to support ruby client to use with io.adafruit.com
- gem 'adafruit-io', :git => 'https://github.com/rmcwilliam/io-client-ruby.git'
-
-#Add faraday to handle to http requests to adafruit io api
-gem 'faraday'
-
 # Add geocoder to handle location related data 
 gem 'geocoder'
 
 # Store uploads on Amazon S3 
 gem 'aws-sdk-v1'
 
-# Use foreman to setup environment variables to run the app 
-gem 'foreman'
-
 # Use rack-cors to make cross domain ajax calls
 gem 'rack-cors'
 
-# Adafruit io dependency 
-gem 'hashie'
+# Use httparty to do what adafruit-io could not 
+gem 'httparty'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
