@@ -10,11 +10,12 @@ class Pet < ActiveRecord::Base
   # validates :avatar, attachment_presence: true
   validates_attachment_file_name :avatar, matches: [ /gif\Z/,
     /jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/]
+end
 
 #   def sync_checkins
 #     @api_data = AdafruitApi.sync_location
 #     change this to use aio object from gem and ruby client
 #     find by id in the controller and then call this method to find location info and parse/store
 #   end
-# end
+
 
