@@ -102,8 +102,11 @@ If the user's account could not be deleted, you should receive status code 401 a
 `email:` Email as string. `password:` Password as string.
 
 #### Response:
-If the login was successful, you should receive status code 200 and ...
+
 Note: You will only recieve the address if one has been entered for the user.
+
+If the login was successful, you should receive status code 200 and ...
+
 
 `{
   "user": {
@@ -112,7 +115,7 @@ Note: You will only recieve the address if one has been entered for the user.
     "access_token": "85ab3e7cd109cea45cd6cd81e44f6659",
     "address": {
       "id": 11,
-      "user_id": 3,
+      "user_id": 4,
       "address": "145 Space lane",
       "city": "smyrna",
       "state": "ga",
@@ -274,7 +277,6 @@ If query was successful, you should receive status code 202 and ...
     }
   ]
 }`
-
 
 ##<a name="delete a pet"></a>Delete a Pet 
 ### DELETE `/pets/:pet_id`
