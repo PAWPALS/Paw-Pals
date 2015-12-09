@@ -44,6 +44,9 @@ gem 'rack-cors'
 # Use httparty to do what adafruit-io could not 
 gem 'httparty'
 
+# Use foreman to handle local credentials
+gem 'foreman'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
