@@ -141,7 +141,7 @@ If the user could not be logged in, you should receive status code 401 and ...
 `name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. 
 
 #### Optional Params: 
-`present:` State either true or false in regards to the pet being lost or present. `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
+`present:` State either true or false in regards to the pet being lost or present(default => true).  `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
 
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
@@ -305,7 +305,7 @@ If delete was unsuccessful, you should receive status code 401 and ...
 `pet_id:` Must provide a pet id to update an individual pets status and or picture. 
 
 #### Optional Params:
-`present:` True or False. `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
+`present:` True or False(default => true). `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
 
 
 #### Response:
