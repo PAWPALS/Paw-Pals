@@ -116,7 +116,7 @@ If the user's account could not be deleted, you should receive status code 401 a
 
 #### Response:
 
-Note: You will only recieve the address if one has been entered for the user.
+Note: You will only receive the address if one has been entered for the user.
 
 If the login was successful, you should receive status code 200 and ...
 
@@ -252,7 +252,7 @@ If query was successfully, you should receive status code 202 and ...
 `pet_id:` Must provide the pets id to retrieve an individual pet.
 
 #### Response:
-If query was successfull, you should receive status code 202 and ...
+If query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -456,7 +456,7 @@ If query was successfully, you should receive status code 202 and ...
 `address_id:` Must provide the address id to retrieve an individual address.
 
 #### Response:
-If successfull, you should receive status code 202 and ...
+If successful, you should receive status code 202 and ...
 
 ```json
 {
