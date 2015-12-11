@@ -1,4 +1,5 @@
  
+ 
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
  
@@ -158,7 +159,7 @@ If the user could not be logged in, you should receive status code 401 and ...
 `name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. 
 
 #### Optional Params: 
-`present:` State either true or false in regards to the pet being lost or present(default => true).  `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
+`present:` State either yes or no in regards to the pet being lost or present(default => yes).  `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
 
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
@@ -172,7 +173,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "unsure",
     "description": "ugliest dog ever",
-    "present": true,
+    "present": yes,
     "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
 }
@@ -189,7 +190,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "grey hound",
     "description": "so cool",
-    "present": true,
+    "present": yes,
     "picture": "/avatars/original/missing.png"
   }
 }
@@ -213,10 +214,10 @@ If the pet could not be created, you should receive status code 422 and ...
 
 #### Params: none
 
-Will return all users pets with their associated user id, pet id, name, breed, description and current status.
+Will return all users pets with their associated user id, pet id, name, breed, description and current status(present:).
 
 #### Response: 
-If query was successfully, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -228,7 +229,7 @@ If query was successfully, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": true,
+      "present": yes,
       "picture": "picture.jpg"
     },
     {
@@ -238,7 +239,7 @@ If query was successfully, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": true,
+      "present": no,
       "picture": "picture.jpg"
     }
   ]
@@ -252,7 +253,7 @@ If query was successfully, you should receive status code 202 and ...
 `pet_id:` Must provide the pets id to retrieve an individual pet.
 
 #### Response:
-If query was successful, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -263,7 +264,7 @@ If query was successful, you should receive status code 202 and ...
     "age": 12,
     "breed": "golden retriever ",
     "description": "cutest dog ever ",
-    "present": true,
+    "present": yes,
     "picture": "picture.jpg"
   }
 }
@@ -276,10 +277,10 @@ If query was successful, you should receive status code 202 and ...
 
 `user_id:` Must provide the users id. 
 
-Will return all of a specific users pets with their associated user id, pet id, name, breed, description and current status.
+Will return all of a specific users pets with their associated user id, pet id, name, breed, description and current status(present:).
 
 #### Response: 
-If query was successful, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -291,7 +292,7 @@ If query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": true,
+      "present": yes,
       "picture": "picture.jpg"
     },
     {
@@ -301,7 +302,7 @@ If query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": true,
+      "present": yes,
       "picture": "picture.jpg"
     }
   ]
@@ -336,10 +337,10 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 #### Params:
 
-`pet_id:` Must provide a pet id to update an individual pets status and or picture. 
+`pet_id:` Must provide a pet id to update an individual pets status(present:) and or picture. 
 
 #### Optional Params:
-`present:` True or False(default => true). `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
+`present:` yes or no(default => yes). `picture:` Optional profile picture can be sent with pet update. Accepted formats (gif, jpg, jpeg, png, jif, jfif).   
 
 
 #### Response:
