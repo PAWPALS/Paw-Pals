@@ -173,7 +173,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "unsure",
     "description": "ugliest dog ever",
-    "present": yes,
+    "present": "yes",
     "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
 }
@@ -190,7 +190,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "grey hound",
     "description": "so cool",
-    "present": yes,
+    "present": "yes",
     "picture": "/avatars/original/missing.png"
   }
 }
@@ -229,7 +229,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     },
     {
@@ -239,7 +239,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": no,
+      "present": "no",
       "picture": "picture.jpg"
     }
   ]
@@ -264,7 +264,7 @@ If the query was successful, you should receive status code 202 and ...
     "age": 12,
     "breed": "golden retriever ",
     "description": "cutest dog ever ",
-    "present": yes,
+    "present": "yes",
     "picture": "picture.jpg"
   }
 }
@@ -321,7 +321,7 @@ If the query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{success: "Pet delete successful!"}
+{"success:" "Pet delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -514,7 +514,7 @@ If query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{success: "Address delete successful!"}
+{"success:" "Address delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -660,7 +660,7 @@ If query was successfully, you should receive status code 202 and ...
 Will return a specific pets most recent set of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
 
 #### Response:
-If successful, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -684,7 +684,7 @@ Will return 5 most recent sets of GPS coordinates with associated `pet id`, `lon
 
 #### Response: 
 
-If query was successfully, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
