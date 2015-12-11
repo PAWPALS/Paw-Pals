@@ -7,15 +7,30 @@ class Pet < ActiveRecord::Base
 
 
   has_attached_file :avatar 
+  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
   # validates :avatar, attachment_presence: true
-  validates_attachment_file_name :avatar, matches: [ /gif\Z/,
-    /jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/]
+  # validates_attachment_file_name :avatar, matches: [ /gif\Z/,
+  #   /jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/]
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+  #private
+
+  def sync_from_api
+    api = AdafruitApi.new
+    checkins = api.get_coordinates#(self.last_checkin_at(checkins))
+    checkins.each do |checkin|
+      self.pet_check_ins.create(longitude: checkin[:long], latitude: checkin[:lat],
+                                adafruit_created_at: checkin[:time], pet_id: checkin[:pet_id])
+    end
+    result = self.pet_check_ins.order(adafruit_created_at: :desc).first
+    adafruit_time_stamp = result.adafruit_created_at
+    self.update(last_checkin_time: adafruit_time_stamp)
+  end
 end
 
-#   def sync_checkins
-#     @api_data = AdafruitApi.sync_location
-#     change this to use aio object from gem and ruby client
-#     find by id in the controller and then call this method to find location info and parse/store
-#   end
 
+
+
+    
+   
 
