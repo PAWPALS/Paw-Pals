@@ -22,7 +22,7 @@ RSpec.describe Pet, type: :model do
   it {should have_attached_file(:avatar)}
 
   it {should validate_attachment_content_type(:avatar).
-     allowing(/gif\Z/,/jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/)}
+     allowing("image/jpg", "image/jpeg", "image/png", "image/gif")}
 
   it {should belong_to(:user)}
  end

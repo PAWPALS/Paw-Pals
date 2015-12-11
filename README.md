@@ -1,3 +1,4 @@
+ 
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
  
@@ -42,6 +43,7 @@ To make an authenticated request in any case other than registering a user or lo
     * [index of a specific pets coordinates](#index of a specific pets coordinates)
 * [Pets GPS Location](#pets GPS location)
   * [show a specific pets most recent GPS coordinates](#show a pets most recent GPS coordinates)
+  * [index of a specific pets GPS coordinates](#index of a specific pets GPS coordinates)
 
     
     
@@ -654,6 +656,8 @@ If query was successfully, you should receive status code 202 and ...
 #### Params:
 `pet_id:` Must provide the pet id to retrieve the most recent individual set of GPS coordinates for a particular pet.
 
+Will return a specific pets most recent set of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
+
 #### Response:
 If successful, you should receive status code 202 and ...
 
@@ -669,3 +673,56 @@ If successful, you should receive status code 202 and ...
 }
 ```
 
+##<a name="index of a specific pets GPS coordinates"></a>Index of a Specific Pets GPS Coordinates 
+### GET `/pet_checkins/index/:pet_id`
+
+#### Params: 
+`pet_id:` Must provide the pet id to retrieve the most recent sets of GPS coordinates for a particular pet.
+
+Will return 5 most recent sets of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
+
+#### Response: 
+
+If query was successfully, you should receive status code 202 and ...
+
+```json
+{
+  "pet_check_ins": [
+    {
+      "pet_id": 9,
+      "longitude": 0,
+      "latitude": 0,
+      "adafruit_created_at": "2015-11-30T14:46:19.772Z",
+      "created_at": "2015-12-11T04:23:39.637Z"
+    },
+    {
+      "pet_id": 9,
+      "longitude": 0,
+      "latitude": 0,
+      "adafruit_created_at": "2015-11-30T14:46:11.053Z",
+      "created_at": "2015-12-11T04:23:39.649Z"
+    },
+    {
+      "pet_id": 9,
+      "longitude": 0,
+      "latitude": 0,
+      "adafruit_created_at": "2015-11-30T14:45:38.691Z",
+      "created_at": "2015-12-11T04:23:39.659Z"
+    },
+    {
+      "pet_id": 9,
+      "longitude": 0,
+      "latitude": 0,
+      "adafruit_created_at": "2015-11-30T14:45:29.970Z",
+      "created_at": "2015-12-11T04:23:39.663Z"
+    },
+    {
+      "pet_id": 9,
+      "longitude": 0,
+      "latitude": 0,
+      "adafruit_created_at": "2015-11-30T14:44:55.768Z",
+      "created_at": "2015-12-11T04:23:39.667Z"
+    }
+  ]
+}
+```

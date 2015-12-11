@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get "/pet_notices/index/:pet_id", to: "pet_notices#index"
   post "/pet_notices/location/:pet_id", to: "pet_notices#enter_location"
 
+  get "/pet_checkins/:id", to: "pet_checkins#show"
+  get "/pet_checkins/index/:id", to: "pet_checkins#index"
+
   resources :addresses do 
   end
 
