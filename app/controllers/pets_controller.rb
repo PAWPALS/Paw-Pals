@@ -6,7 +6,7 @@ class PetsController < ApplicationController
                   breed: params[:breed],
                   age: params[:age],
                   description: params[:description],
-                  present: params[:present] || true,
+                  present: params[:present] || "yes",
                   avatar: params[:picture],
                   user_id: current_user.id)
     if @pet.save
