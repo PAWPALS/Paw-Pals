@@ -40,6 +40,9 @@ To make an authenticated request in any case other than registering a user or lo
     * [register a specific pets location](#register a pets location)
     * [show a specific pets most recent coordinates](#show a pets most recent coordinates)
     * [index of a specific pets coordinates](#index of a specific pets coordinates)
+* [Pets GPS Location](#pets GPS location)
+  * [show a specific pets most recent GPS coordinates](#show a pets most recent GPS coordinates)
+
     
     
     
@@ -55,21 +58,25 @@ To make an authenticated request in any case other than registering a user or lo
 #### Response:
 If the user was created successfully, you should receive status code 201 and ...
 
-`{
+```json
+{
   "user": {
     "user_id": 4,
     "email": "ryanmcwilliam@gmail.com",
     "access_token": "808a1fe0da2b04668d64b280396bf04f"
   }
-}`
+}
+```
 
 If the user could not be created, you should receive status code 422 and ...
 
-`{
+```json
+{
     "errors": [
         "Email has already been taken"
        ]
-}`
+}
+```
 
 ##<a name="delete an account"></a>Delete an Account
 ### Delete `/signup`
@@ -82,17 +89,21 @@ If the user could not be created, you should receive status code 422 and ...
 
 If you successfully deleted the user's account, you should receive status code 200 and ...
 
-`{
+```json
+{
     success:[ 
         "Delete success!"
     ]
-}`
+}
+```
 
 If the user's account could not be deleted, you should receive status code 401 and ...
 
-`{
+```json
+{
   "error": "Invalid email (rmcwilliam@gmail.com) or password."
-}`
+}
+```
 
 ##<a name="logging in"></a>Logging In
 ### `POST /login`
@@ -108,7 +119,8 @@ Note: You will only recieve the address if one has been entered for the user.
 If the login was successful, you should receive status code 200 and ...
 
 
-`{
+```json
+{
   "user": {
     "id": 4,
     "email": "rmcwilliam@gmail.com",
@@ -126,11 +138,14 @@ If the login was successful, you should receive status code 200 and ...
       "longitude": -84.5064881
     }
   }
-}`
+}
+```
 
 If the user could not be logged in, you should receive status code 401 and ...
 
-`{"error": "Could not find user for rmcwilliam@gmail.com or wrong password."}`
+```json
+{"error": "Could not find user for rmcwilliam@gmail.com or wrong password."}
+```
 
 ##<a name="pets"></a>Pets
 
@@ -146,7 +161,8 @@ If the user could not be logged in, you should receive status code 401 and ...
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
 
-`{
+```json
+{
   "pet": {
     "user_id": 4,
     "pet_id": 10,
@@ -157,9 +173,13 @@ If the pet was created successfully, you should receive status code 201 and ...
     "present": true,
     "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
-}`
+}
+```
+
 #### Response without optional params:
-`{
+
+```json
+{
   "pet": {
     "user_id": 5,
     "pet_id": 12,
@@ -167,22 +187,24 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "grey hound",
     "description": "so cool",
-    "present": null,
+    "present": true,
     "picture": "/avatars/original/missing.png"
   }
-}`
+}
+```
 
 If the pet could not be created, you should receive status code 422 and ...
 
-`{
+```json
+{
   "errors": [
     "Name can't be blank",
     "Breed can't be blank",
     "Age can't be blank",
     "Description can't be blank"
   ]
-}`
-
+}
+```
 
 ##<a name="index of pets"></a>Index of Pets
 ### GET `/pets`
@@ -194,7 +216,8 @@ Will return all users pets with their associated user id, pet id, name, breed, d
 #### Response: 
 If query was successfully, you should receive status code 202 and ...
 
-`{
+```json
+{
   "pets": [
     {
       "user_id": 4,
@@ -217,7 +240,8 @@ If query was successfully, you should receive status code 202 and ...
       "picture": "picture.jpg"
     }
   ]
-}`
+}
+```
 
 ##<a name="show single pet"></a>Show Single Pet
 ### GET `/pets/:pet_id`
@@ -228,7 +252,8 @@ If query was successfully, you should receive status code 202 and ...
 #### Response:
 If query was successfull, you should receive status code 202 and ...
 
-`{
+```json
+{
   "pet": {
     "user_id": 4,
     "pet_id": 1,
@@ -239,7 +264,8 @@ If query was successfull, you should receive status code 202 and ...
     "present": true,
     "picture": "picture.jpg"
   }
-}`
+}
+```
 
 ##<a name="index of users pets"></a>Index of Users Pets
 ### GET `/users/:id/pets`
@@ -253,7 +279,8 @@ Will return all of a specific users pets with their associated user id, pet id, 
 #### Response: 
 If query was successful, you should receive status code 202 and ...
 
-`{
+```json
+{
   "pets": [
     {
       "user_id": 4,
@@ -276,7 +303,8 @@ If query was successful, you should receive status code 202 and ...
       "picture": "picture.jpg"
     }
   ]
-}`
+}
+```
 
 ##<a name="delete a pet"></a>Delete a Pet 
 ### DELETE `/pets/:pet_id`
@@ -289,13 +317,17 @@ If query was successful, you should receive status code 202 and ...
 
 If delete was successful, you should receive status code 202 and ...
 
-`{success: "Pet delete successful!"}`
+```json
+{success: "Pet delete successful!"}
+```
 
 If delete was unsuccessful, you should receive status code 401 and ...
 
-`{
+```json
+{
 "Unable to delete the pet."
-}`
+}
+```
 
 ##<a name="update pet status and or picture"></a>Update Pet Status and or Picture
 ### PUT `/pets/:pet_id`
@@ -312,16 +344,19 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 If update was successful, you should receive status code 202 and ...
 
-`{
+```json
+{
   "success": "Pet status and or picture update successful!"
-}`
+}
+```
 
 If update was unsuccessful, you should receive status code 401 and ...
 
-
-`{
+```json
+{
 "Unable to edit pets status and or picture."
-}`
+}
+```
 
 ##<a name="addresses"></a>Addresses
 
@@ -334,7 +369,8 @@ If update was unsuccessful, you should receive status code 401 and ...
 #### Response:
 Will include longitude and latitude calculated from the submitted address. If the address was created successfully, you should receive status code 201 and ...
 
-`{
+```json
+{
   "address": {
     "user_id": 3,
     "address_id": 12,
@@ -345,11 +381,13 @@ Will include longitude and latitude calculated from the submitted address. If th
     "longitude": -84.4707229,
     "latitude": 33.9284603
   }
-}`
+}
+```
 
 If the address could not be created, you should receive status code 422 and ...
 
-`{
+```json
+{
   "errors": [
     "Street_address can't be blank",
     "City can't be blank",
@@ -358,8 +396,8 @@ If the address could not be created, you should receive status code 422 and ...
     "Latitude can't be blank",
     "Longitude can't be blank"
   ]
-}`
-
+}
+```
 
 ##<a name="index of all users addresses"></a>Index of all Users Addresses
 ### GET `/addresses`
@@ -372,7 +410,8 @@ Will return all users addresses with their associated `user id`, `address id`, `
 
 If query was successfully, you should receive status code 202 and ...
 
-`{
+```json
+{
   "addresses": [
     {
       "user_id": 3,
@@ -405,7 +444,8 @@ If query was successfully, you should receive status code 202 and ...
       "longitude": -84.4707229
     }
   ]
-}`
+}
+```
 
 ##<a name="show single address"></a>Show Single Address
 ### GET `/addresses/:address_id`
@@ -416,7 +456,8 @@ If query was successfully, you should receive status code 202 and ...
 #### Response:
 If successfull, you should receive status code 202 and ...
 
-`{
+```json
+{
   "address": {
     "user_id": 3,
     "address_id": 10,
@@ -427,7 +468,8 @@ If successfull, you should receive status code 202 and ...
     "latitude": 33.8806897,
     "longitude": -84.5064881
   }
-}`
+}
+```
 
 ##<a name ="show particular users address"></a>Show particular Users Address 
 ### GET `/users/:id/addresses`
@@ -442,7 +484,8 @@ Will return a specific users address with it's `user id`, `address id`, `street_
 
 If query was successful, you should receive status code 202 and ...
 
-`{
+```json
+{
   "address": {
     "user_id": 3,
     "address_id": 10,
@@ -453,7 +496,8 @@ If query was successful, you should receive status code 202 and ...
     "latitude": 33.8806897,
     "longitude": -84.5064881
   }
-}`
+}
+```
 
 ##<a name="delete an address"></a>Delete an Address 
 ### DELETE `/addresses/:address_id`
@@ -466,14 +510,17 @@ If query was successful, you should receive status code 202 and ...
 
 If delete was successful, you should receive status code 202 and ...
 
-`{success: "Address delete successful!"}`
+```json
+{success: "Address delete successful!"}
+```
 
 If delete was unsuccessful, you should receive status code 401 and ...
 
-`{
+```json
+{
 "Unable to delete the Address."
-}`
-
+}
+```
 
 ##<a name="update address"></a>Update Address  
 ### PUT `/addresses/:address_id`
@@ -486,7 +533,8 @@ If delete was unsuccessful, you should receive status code 401 and ...
 
 Latitude and Longitude will automatically be re-calculated based on updated address. If update was successful, you should receive status code 202 and ...
 
-`{
+```json
+{
   "address": {
     "user_id": 3,
     "address_id": 10,
@@ -497,14 +545,16 @@ Latitude and Longitude will automatically be re-calculated based on updated addr
     "longitude": -84.5064881,
     "latitude": 33.8806897
   }
-}`
+}
+```
 
 If update was unsuccessful, you should receive status code 401 and ...
 
-
-`{
+```json
+{
 "Unable to edit address."
-}`
+}
+```
 
 
 ##<a name="pets location"></a>Pets Location
@@ -518,23 +568,27 @@ If update was unsuccessful, you should receive status code 401 and ...
 #### Response:
 If the location parameters were created/saved successfully, you should receive status code 201 and ...
 
-`{
+```json
+{
   "pet_notice": {
     "pet_id": 1,
     "longitude": "34.67",
     "latitude": "74.567",
     "created_at": "2015-12-04T18:31:33.248Z"
   }
-}`
+}
+```
 
 If the location parameters could not be created/stored, you should receive status code 422 and ...
 
-`{
+```json
+{
   "errors": [
     "Latitude can't be blank",
     "Longitude can't be blank"
   ]
-}`
+}
+```
 
 ##<a name="show a pets most recent coordinates"></a>Show a Pets Most Recent Coordinates 
 ### GET `/pet_notices/:pet_id`
@@ -545,14 +599,16 @@ If the location parameters could not be created/stored, you should receive statu
 #### Response:
 If successful, you should receive status code 202 and ...
 
-`{
+```json
+{
   "pet_notice": {
     "pet_id": 1,
     "longitude": "34.67",
     "latitude": "74.567",
     "created_at": "2015-12-04T18:31:33.248Z"
   }
-}`
+}
+```
 
 ##<a name="index of a specific pets coordinates"></a>Index of a Specific Pets Coordinates 
 ### GET `/pet_notices/index/:pet_id`
@@ -565,7 +621,8 @@ Will return all of a particular pets coordinates with their associated `pet id`,
 
 If query was successfully, you should receive status code 202 and ...
 
-`{
+```json
+{
   "pet_notices": [
     {
       "pet_id": 1,
@@ -586,5 +643,29 @@ If query was successfully, you should receive status code 202 and ...
       "created_at": "2015-12-04T18:31:33.248Z"
     }
   ]
-}`
+}
+```
+
+##<a name="pets GPS location"></a>Pets GPS Location
+
+##<a name="show a pets most recent GPS coordinates"></a>Show a Pets Most Recent GPS Coordinates 
+### GET `/pet_checkins/:pet_id`
+
+#### Params:
+`pet_id:` Must provide the pet id to retrieve the most recent individual set of GPS coordinates for a particular pet.
+
+#### Response:
+If successful, you should receive status code 202 and ...
+
+```json
+{
+  "pet_check_in": {
+    "pet_id": 9,
+    "longitude": 0,
+    "latitude": 0,
+    "adafruit_created_at": "2015-11-30T14:45:29.970Z",
+    "created_at": "2015-12-11T01:23:25.623Z"
+  }
+}
+```
 
