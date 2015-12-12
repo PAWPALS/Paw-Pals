@@ -1,5 +1,4 @@
  
- 
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
  
@@ -42,6 +41,7 @@ To make an authenticated request in any case other than registering a user or lo
     * [register a specific pets location](#register a pets location)
     * [show a specific pets most recent coordinates](#show a pets most recent coordinates)
     * [index of a specific pets coordinates](#index of a specific pets coordinates)
+    * [index of all users lost pets coordinates](#index of all users lost pets coordinates)
 * [Pets GPS Location](#pets GPS location)
   * [show a specific pets most recent GPS coordinates](#show a pets most recent GPS coordinates)
   * [index of a specific pets GPS coordinates](#index of a specific pets GPS coordinates)
@@ -94,7 +94,7 @@ If you successfully deleted the user's account, you should receive status code 2
 
 ```json
 {
-    "success:"[ 
+    "success":[ 
         "Delete success!"
     ]
 }
@@ -321,7 +321,7 @@ If the query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{"success:" "Pet delete successful!"}
+{"success": "Pet delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -514,7 +514,7 @@ If query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{"success:" "Address delete successful!"}
+{"success": "Address delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -566,7 +566,7 @@ If update was unsuccessful, you should receive status code 401 and ...
 ### POST `/pet_notices/:pet_id`
 
 #### Params:
-` pet_id:` Must provide the pets id. `longitude:` Must provide longitude value. `latitude:` Must provide latitude value.
+` pet_id:` Must provide the pets id. `longitude:` Must provide longitude value (data type => float). `latitude:` Must provide latitude value (data type => float).
 
 #### Response:
 If the location parameters were created/saved successfully, you should receive status code 201 and ...
@@ -622,7 +622,7 @@ Will return all of a particular pets coordinates with their associated `pet id`,
 
 #### Response: 
 
-If query was successfully, you should receive status code 202 and ...
+If the query was successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -649,6 +649,45 @@ If query was successfully, you should receive status code 202 and ...
 }
 ```
 
+##<a name="index of all users lost pets coordinates"></a>Index of all Users Lost Pets Coordinates 
+### GET `/pet_notices/pets/all_lost`
+
+#### Params: none
+
+Will return all users lost pets coordinates with their associated `user_id`, `pet id`, `longitude` and `latitude`.
+
+#### Response: 
+
+If the query was successful, you should receive status code 202 and ...
+
+```json
+{
+  "lost_pets_coordinates": [
+    {
+      "user_id": 5,
+      "latitude": 38.92,
+      "longitude": -86.99
+    },
+    {
+      "user_id": 7,
+      "latitude": 34.62,
+      "longitude": -76.99
+    }
+  ],
+  "pets": [
+    {
+      "user_id": 5,
+      "pet_id": 11
+    },
+    {
+      "user_id": 7,
+      "pet_id": 12
+    }
+  ]
+}
+```
+
+
 ##<a name="pets GPS location"></a>Pets GPS Location
 
 ##<a name="show a pets most recent GPS coordinates"></a>Show a Pets Most Recent GPS Coordinates 
@@ -660,7 +699,7 @@ If query was successfully, you should receive status code 202 and ...
 Will return a specific pets most recent set of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
 
 #### Response:
-If the query was successful, you should receive status code 202 and ...
+If successful, you should receive status code 202 and ...
 
 ```json
 {
@@ -684,7 +723,7 @@ Will return 5 most recent sets of GPS coordinates with associated `pet id`, `lon
 
 #### Response: 
 
-If the query was successful, you should receive status code 202 and ...
+If query was successfully, you should receive status code 202 and ...
 
 ```json
 {

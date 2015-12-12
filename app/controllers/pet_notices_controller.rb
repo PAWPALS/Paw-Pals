@@ -24,4 +24,11 @@ class PetNoticesController < ApplicationController
     render "index.json.jbuilder", status: :accepted 
   end
 
+  def index_all_lost
+    @pets = Pet.where(present: "no")
+    @users = @pets.pluck(:user_id)
+    @addresses = Address.where(user_id: @users)
+    render "all_lost_index.json.jbuilder", status: :accepted
+  end
+
 end
