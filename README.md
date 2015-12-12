@@ -94,7 +94,7 @@ If you successfully deleted the user's account, you should receive status code 2
 
 ```json
 {
-    success:[ 
+    "success:"[ 
         "Delete success!"
     ]
 }
@@ -292,7 +292,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     },
     {
@@ -302,7 +302,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     }
   ]
@@ -543,7 +543,7 @@ Latitude and Longitude will automatically be re-calculated based on updated addr
     "address_id": 10,
     "street_address": "607 Too Cool drive",
     "city": "Smyrna",
-    "state": Ga,
+    "state": "Ga",
     "zip": 33103,
     "longitude": -84.5064881,
     "latitude": 33.8806897
