@@ -25,5 +25,9 @@ RSpec.describe Pet, type: :model do
      allowing("image/jpg", "image/jpeg", "image/png", "image/gif")}
 
   it {should belong_to(:user)}
+
+  it {should have_many(:pet_check_ins)}
+
+  it {should have_many(:pet_notices)}
  end
 end

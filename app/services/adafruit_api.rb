@@ -11,7 +11,7 @@ class AdafruitApi
 
     def get_coordinates()
       response = AdafruitApi.get("/api/feeds/location/data", headers: @key)     
-      coordinates = response.first(4)
+      coordinates = response.first(5)
       coordinates.map do |api| {lat: api["lat"], long: api["lon"], time: api["created_at"]}
         end
     end
