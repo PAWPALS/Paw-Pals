@@ -1,4 +1,5 @@
 class PetCheckinsController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @pet = Pet.find_by!(params[:pet_id])
