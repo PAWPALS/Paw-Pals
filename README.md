@@ -1,6 +1,4 @@
  
- 
- 
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
  
@@ -96,7 +94,7 @@ If you successfully deleted the user's account, you should receive status code 2
 
 ```json
 {
-    success:[ 
+    "success":[ 
         "Delete success!"
     ]
 }
@@ -175,7 +173,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "unsure",
     "description": "ugliest dog ever",
-    "present": yes,
+    "present": "yes",
     "picture": "http://s3.amazonaws.com/testing-pawpals/pets/avatars/000/000/010/original/2015-06-07_12.10.13.jpg?1449007823"
   }
 }
@@ -192,7 +190,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "age": 8,
     "breed": "grey hound",
     "description": "so cool",
-    "present": yes,
+    "present": "yes",
     "picture": "/avatars/original/missing.png"
   }
 }
@@ -231,7 +229,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     },
     {
@@ -241,7 +239,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": no,
+      "present": "no",
       "picture": "picture.jpg"
     }
   ]
@@ -266,7 +264,7 @@ If the query was successful, you should receive status code 202 and ...
     "age": 12,
     "breed": "golden retriever ",
     "description": "cutest dog ever ",
-    "present": yes,
+    "present": "yes",
     "picture": "picture.jpg"
   }
 }
@@ -294,7 +292,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 12,
       "breed": "golden retriever ",
       "description": "cutest dog ever ",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     },
     {
@@ -304,7 +302,7 @@ If the query was successful, you should receive status code 202 and ...
       "age": 8,
       "breed": "unsure",
       "description": "ugliest dog ever",
-      "present": yes,
+      "present": "yes",
       "picture": "picture.jpg"
     }
   ]
@@ -323,7 +321,7 @@ If the query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{success: "Pet delete successful!"}
+{"success": "Pet delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -516,7 +514,7 @@ If query was successful, you should receive status code 202 and ...
 If delete was successful, you should receive status code 202 and ...
 
 ```json
-{success: "Address delete successful!"}
+{"success": "Address delete successful!"}
 ```
 
 If delete was unsuccessful, you should receive status code 401 and ...
@@ -545,7 +543,7 @@ Latitude and Longitude will automatically be re-calculated based on updated addr
     "address_id": 10,
     "street_address": "607 Too Cool drive",
     "city": "Smyrna",
-    "state": Ga,
+    "state": "Ga",
     "zip": 33103,
     "longitude": -84.5064881,
     "latitude": 33.8806897
