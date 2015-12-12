@@ -19,6 +19,10 @@ RSpec.describe PetCheckIn, type: :model do
     expect(build(:pet_check_in, pet_id: nil)).to_not be_valid
   end
 
+  # it "is invalid without adafruit_created_at" do
+  #   expect(build(:pet_check_in, adafruit_created_at: nil)).to_not be_valid
+  # end
+
     it {should belong_to(:pet)}
  end
 end
