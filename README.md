@@ -690,6 +690,8 @@ If the query was successful, you should receive status code 202 and ...
 
 ##<a name="pets GPS location"></a>Pets GPS Location
 
+This set of routes is specific to the arduino/adafruit gps module that I built as a possible future feature for the application. It allows me to get real time location updates or set geofencing alerts in relation to a dogs location.   
+
 ##<a name="show a pets most recent GPS coordinates"></a>Show a Pets Most Recent GPS Coordinates 
 ### GET `/pet_checkins/:pet_id`
 
