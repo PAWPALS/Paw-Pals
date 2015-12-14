@@ -6,10 +6,11 @@ RSpec.describe RegistrationsController, type: :controller do
 
       
     it "creates user in the database with valid attributes and sends status created" do
-      params = FactoryGirl.attributes_for(:user)  
+      params = FactoryGirl.attributes_for(:user) 
       post :create, params 
       expect(User.count).to eq(1)
       expect(response).to have_http_status(201)
+      expect(response).to render_template("registrations/create.json.jbuilder")
     end
 
     it "does not create user in the database with invalid attributes and sends status unprocessable" do
@@ -29,7 +30,8 @@ RSpec.describe RegistrationsController, type: :controller do
       it "allow to user login with proper params and sends status ok" do
         params = FactoryGirl.attributes_for(:user)
         post :login, params
-        expect(response).to have_http_status(200)  
+        expect(response).to have_http_status(200)
+        expect(response).to render_template("registrations/login.json.jbuilder")  
       end
 
       it "does not alllow user to login with improper params and sends status unauthorized" do
