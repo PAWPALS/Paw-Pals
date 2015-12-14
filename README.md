@@ -43,13 +43,9 @@ To make an authenticated request in any case other than registering a user or lo
     * [index of a specific pets coordinates](#index of a specific pets coordinates)
     * [index of all users lost pets coordinates](#index of all users lost pets coordinates)
 * [Pets GPS Location](#pets GPS location)
-  * [show a specific pets most recent GPS coordinates](#show a pets most recent GPS coordinates)
-  * [index of a specific pets GPS coordinates](#index of a specific pets GPS coordinates)
-
+  * [get a pets most recent GPS coordinates](#get a pets most recent GPS coordinates)
     
-    
-    
-    
+       
 ##<a name="users"></a>Users
 
 ##<a name="register an account"></a>Registering an Account
@@ -692,79 +688,57 @@ If the query was successful, you should receive status code 202 and ...
 
 This set of routes is specific to the arduino/adafruit gps module that I built as a possible future feature for the application. It allows me to get real time location updates or set geofencing alerts in relation to a dogs location.   
 
-##<a name="show a pets most recent GPS coordinates"></a>Show a Pets Most Recent GPS Coordinates 
+##<a name="get a pets most recent GPS coordinates"></a>Get a Pets Most Recent GPS Coordinates 
 ### GET `/pet_checkins/:pet_id`
 
 #### Params:
-`pet_id:` Must provide the pet id to retrieve the most recent individual set of GPS coordinates for a particular pet.
 
-Will return a specific pets most recent set of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
+`pet_id:` Must provide the pet id to retrieve the 5 most recent individual sets of GPS coordinates for a particular pet.
+
+Will return a specific pets 5 most recent sets of GPS coordinates in descending order with their associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
 
 #### Response:
 If successful, you should receive status code 202 and ...
 
 ```json
 {
-  "pet_check_in": {
-    "pet_id": 9,
-    "longitude": 0,
-    "latitude": 0,
-    "adafruit_created_at": "2015-11-30T14:45:29.970Z",
-    "created_at": "2015-12-11T01:23:25.623Z"
-  }
-}
-```
-
-##<a name="index of a specific pets GPS coordinates"></a>Index of a Specific Pets GPS Coordinates 
-### GET `/pet_checkins/index/:pet_id`
-
-#### Params: 
-`pet_id:` Must provide the pet id to retrieve the most recent sets of GPS coordinates for a particular pet.
-
-Will return 5 most recent sets of GPS coordinates with associated `pet id`, `longitude`, `latitude`, `adafruit_created_at` and `created_at` fields.
-
-#### Response: 
-
-If query was successfully, you should receive status code 202 and ...
-
-```json
-{
   "pet_check_ins": [
     {
-      "pet_id": 9,
-      "longitude": 0,
-      "latitude": 0,
-      "adafruit_created_at": "2015-11-30T14:46:19.772Z",
-      "created_at": "2015-12-11T04:23:39.637Z"
+      "pet_id": 22,
+      "longitude": -84.391685,
+      "latitude": 33.751862,
+      "adafruit_created_at": "2015-12-14T18:35:40.738Z",
+      "created_at": "2015-12-14T18:36:04.652Z"
     },
     {
-      "pet_id": 9,
-      "longitude": 0,
-      "latitude": 0,
-      "adafruit_created_at": "2015-11-30T14:46:11.053Z",
-      "created_at": "2015-12-11T04:23:39.649Z"
+      "pet_id": 22,
+      "longitude": -84.391602,
+      "latitude": 33.752075,
+      "adafruit_created_at": "2015-12-14T18:34:39.445Z",
+      "created_at": "2015-12-14T18:36:04.659Z"
     },
     {
-      "pet_id": 9,
-      "longitude": 0,
-      "latitude": 0,
-      "adafruit_created_at": "2015-11-30T14:45:38.691Z",
-      "created_at": "2015-12-11T04:23:39.659Z"
+      "pet_id": 22,
+      "longitude": -84.391563,
+      "latitude": 33.752048,
+      "adafruit_created_at": "2015-12-14T18:34:26.647Z",
+      "created_at": "2015-12-14T18:36:04.664Z"
     },
     {
-      "pet_id": 9,
-      "longitude": 0,
-      "latitude": 0,
-      "adafruit_created_at": "2015-11-30T14:45:29.970Z",
-      "created_at": "2015-12-11T04:23:39.663Z"
+      "pet_id": 22,
+      "longitude": -84.391655,
+      "latitude": 33.751934,
+      "adafruit_created_at": "2015-12-14T18:34:19.046Z",
+      "created_at": "2015-12-14T18:36:04.670Z"
     },
     {
-      "pet_id": 9,
-      "longitude": 0,
-      "latitude": 0,
-      "adafruit_created_at": "2015-11-30T14:44:55.768Z",
-      "created_at": "2015-12-11T04:23:39.667Z"
+      "pet_id": 22,
+      "longitude": -84.391708,
+      "latitude": 33.751774,
+      "adafruit_created_at": "2015-12-14T18:32:23.200Z",
+      "created_at": "2015-12-14T18:36:04.675Z"
     }
   ]
 }
 ```
+

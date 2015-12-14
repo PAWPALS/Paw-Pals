@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get "/pet_notices/pets/all_lost", to: "pet_notices#index_all_lost"
 
   get "/pet_checkins/:id", to: "pet_checkins#show"
-  get "/pet_checkins/index/:id", to: "pet_checkins#index"
 
   resources :addresses do 
   end
