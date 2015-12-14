@@ -5,7 +5,7 @@ class AdafruitApi
 
     def initialize()
       @key = {
-          "X-AIO-Key" => ENV["ADAFRUIT_API_KEY"] 
+          "X-AIO-Key" => ENV["X-AIO-Key"] 
       }
     end     
 
