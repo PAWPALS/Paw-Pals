@@ -4,83 +4,52 @@ RSpec.describe RegistrationsController, type: :controller do
 
     context "POST #create" do
 
-    it "sends status created when user successfully created" do
-      params = FactoryGirl.attributes_for(:user)
-      post :create, params
-      expect(response).to have_http_status(201)
-    end
-
-    it "sends status unprocessable entity when user not successfully created" do
-      params = FactoryGirl.attributes_for(:user, email: nil)
-      post :create, params
-      expect(response).to have_http_status(422) 
-    end 
-
       
-    it "creates user in the database with valid attributes" do
+    it "creates user in the database with valid attributes and sends status created" do
       params = FactoryGirl.attributes_for(:user)  
       post :create, params 
       expect(User.count).to eq(1)
+      expect(response).to have_http_status(201)
     end
 
-    it "does not create user in the database with invalid attributes" do
+    it "does not create user in the database with invalid attributes and sends status unprocessable" do
       params = FactoryGirl.attributes_for(:user, email: nil)
       post :create, params
       expect(User.count).to eq(0)
+      expect(response).to have_http_status(422)
     end
 
     context "POST #login" do
 
-    let(:user) { FactoryGirl.create(:user) }
-    before(:each) do
-    allow(controller).to receive(:current_user).and_return(user) 
-    end
-
-      it "sends status ok with proper params login" do
-        params = FactoryGirl.attributes_for(:user)
-        post :login, params
-        expect(response).to have_http_status(200) 
+        let(:user) { FactoryGirl.create(:user) }
+        before(:each) do
+        allow(controller).to receive(:current_user).and_return(user) 
       end
 
-      it "sends status unauthorized with improper params login" do
+      it "allow to user login with proper params and sends status ok" do
+        params = FactoryGirl.attributes_for(:user)
+        post :login, params
+        expect(response).to have_http_status(200)  
+      end
+
+      it "does not alllow user to login with improper params and sends status unauthorized" do
         params = FactoryGirl.attributes_for(:user, password: nil)
         post :login, params
-        expect(response).to have_http_status(401) 
-      end
-
-
-      it "allow to user login with proper params" do
-        params = FactoryGirl.attributes_for(:user)
-        post :login, params
-      end
-
-      it "does not alllow user to login with improper params" do
-        params = FactoryGirl.attributes_for(:user, email: nil)
-        post :login, params 
-    end
+        expect(response).to have_http_status(401)  
+     end
 
     context "DELETE #destroy" do
 
-      it "sends status ok with proper params destroy account" do
+       it "allows user to delete account with proper params and sends status ok" do
         params = FactoryGirl.attributes_for(:user)
-        delete :destroy, params
+        delete :destroy, params 
         expect(response).to have_http_status(200) 
-    end
-
-    it "sends status unauthorized with improper params delete account" do
-        params = FactoryGirl.attributes_for(:user, password: nil)
-        delete :destroy, params
-        expect(response).to have_http_status(401) 
       end
 
-      it "allow user to delete account with proper params" do
-        params = FactoryGirl.attributes_for(:user)
-        delete :destroy, params 
-      end
-
-      it " does not allow user to delete account with improper params" do
+      it " does not allow user to delete account with improper params and send status unauthorized" do
         params = FactoryGirl.attributes_for(:user, password: nil)
         delete :destroy, params 
+         expect(response).to have_http_status(401) 
       end
    end
   end
