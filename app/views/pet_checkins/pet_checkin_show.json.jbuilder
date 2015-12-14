@@ -1,7 +1,10 @@
-json.pet_check_in do
-	json.pet_id @pet_check_in.pet_id
-	json.longitude @pet_check_in.longitude
-	json.latitude @pet_check_in.latitude
-	json.adafruit_created_at @pet_check_in.adafruit_created_at
-	json.created_at @pet_check_in.created_at
-end
+json.pet_check_ins @pet_check_ins do |checkin|
+	json.pet_id checkin.pet_id
+	json.longitude checkin.longitude 
+	json.latitude checkin.latitude 
+	json.adafruit_created_at checkin.adafruit_created_at
+	json.created_at checkin.created_at
+ end
+
+
+
