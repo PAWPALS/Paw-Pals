@@ -19,7 +19,7 @@ class Pet < ActiveRecord::Base
     checkins = api.get_coordinates
     checkins.each do |checkin|
       self.pet_check_ins.create(longitude: checkin[:long], latitude: checkin[:lat],
-                                adafruit_created_at: checkin[:time], pet_id: checkin[:pet_id])
+                                adafruit_created_at: checkin[:time], adafruit_id: checkin[:id], pet_id: checkin[:pet_id])
     end
     result = self.pet_check_ins.order(adafruit_created_at: :desc).first
     adafruit_time_stamp = result.adafruit_created_at
