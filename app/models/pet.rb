@@ -6,12 +6,11 @@ class Pet < ActiveRecord::Base
   validates_presence_of :name, :breed, :age, :description
 
 
-  has_attached_file :avatar 
+  has_attached_file :avatar, :styles => {thumb: '124x155>',
+      small: '200x200>', medium: '400x500', mobile: '800x1000>'}
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   # validates :avatar, attachment_presence: true
-  # validates_attachment_file_name :avatar, matches: [ /gif\Z/,
-  #   /jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/]
   
 
   def sync_from_api
