@@ -7,4 +7,5 @@
  	json.description @pet.description
  	json.present @pet.present
  	json.picture @pet.avatar
+ 	json.mobile_url @pet.mobile_url
  end

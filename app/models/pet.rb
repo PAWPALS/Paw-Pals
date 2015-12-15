@@ -6,12 +6,11 @@ class Pet < ActiveRecord::Base
   validates_presence_of :name, :breed, :age, :description
 
 
-  has_attached_file :avatar 
+  has_attached_file :avatar, :styles => {thumb: '124x155>',
+      small: '200x200>', medium: '400x500', mobile: '800x1000>'}
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   # validates :avatar, attachment_presence: true
-  # validates_attachment_file_name :avatar, matches: [ /gif\Z/,
-  #   /jpg\Z/, /jpeg\Z/, /png\Z/, /jif\Z/, /jfif\Z/]
   
 
   def sync_from_api
@@ -19,7 +18,7 @@ class Pet < ActiveRecord::Base
     checkins = api.get_coordinates
     checkins.each do |checkin|
       self.pet_check_ins.create(longitude: checkin[:long], latitude: checkin[:lat],
-                                adafruit_created_at: checkin[:time], pet_id: checkin[:pet_id])
+                                adafruit_created_at: checkin[:time], adafruit_id: checkin[:id], pet_id: checkin[:pet_id])
     end
     result = self.pet_check_ins.order(adafruit_created_at: :desc).first
     adafruit_time_stamp = result.adafruit_created_at

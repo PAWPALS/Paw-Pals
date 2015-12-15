@@ -155,7 +155,7 @@ If the user could not be logged in, you should receive status code 401 and ...
 `name:` Must be given a name. `age:` Must enter an age. `breed:` Must provide breed, mutt, etc. `description:` Must provide a short description of the pet. 
 
 #### Optional Params: 
-`present:` State either yes or no in regards to the pet being lost or present(default => yes).  `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). 
+`present:` State either yes or no in regards to the pet being lost or present(default => yes).  `picture:` Profile picture can be sent with pet registration. Accepted formats (gif, jpg, jpeg, png, jif, jfif). `mobile_url:` Can be sent if you need to use a janky work around to save and render pictures on mobile. Please note that `mobile_url` will not be referenced after this. 
 
 #### Response:
 If the pet was created successfully, you should receive status code 201 and ...
@@ -188,6 +188,7 @@ If the pet was created successfully, you should receive status code 201 and ...
     "description": "so cool",
     "present": "yes",
     "picture": "/avatars/original/missing.png"
+    "mobile_url": "null"
   }
 }
 ```
