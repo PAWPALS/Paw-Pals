@@ -13,7 +13,7 @@ class AdafruitApi
       response = AdafruitApi.get("/api/feeds/location/data", headers: @key)     
       coordinates = response.first(5)
       @pet_checkins = PetCheckIn.last(5)
-          p = @pet_checkins.map do |id| {id: id["adafruit_id"], lat: id["latitude"], long: id["longitude"], time: id["adafruit_created_at"].to_time}
+          p = @pet_checkins.map do |record| {id: record["adafruit_id"], lat: record["latitude"], long: record["longitude"], time: record["adafruit_created_at"].to_time}
         end
           c = coordinates.map do |api| {id: api["id"], lat: api["lat"], long: api["lon"], time: api["created_at"].to_time}
         end
