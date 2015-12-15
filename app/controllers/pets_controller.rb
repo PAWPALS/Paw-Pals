@@ -8,6 +8,7 @@ class PetsController < ApplicationController
                   description: params[:description],
                   present: params[:present] || "yes",
                   avatar: params[:picture],
+                  mobile_url: params[:mobile_url],
                   user_id: current_user.id)
     if @pet.save
       render "create.json.jbuilder", status: :created
