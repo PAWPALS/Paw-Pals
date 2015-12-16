@@ -1,12 +1,12 @@
- 
 [![Build Status](https://travis-ci.org/rmcwilliam/PawPals.svg?branch=master)](http://travis-ci.org/rmcwilliam/PawPals)
 
+![Alt text](https://github.com/rmcwilliam/pawpals/blob/master/app/images/default_image.jpg "PawPals")
  
 # API 
 
 ##Overview
 
-Welcome to the pawpals App API. The app allows users to register their pets and keep track of them via help from the user community and positional data. The following documentation will outline how all requests and responses will be handled.  
+Welcome to the PawPals App API. The app allows users to register their pets and keep track of them via help from the user community and positional data. The following documentation will outline how all requests and responses will be handled.  
 
 
 Data can be accessed from the [https://pawpals.herokuapp.com/]("https://pawpals.herokuapp.com/") domain. All requests and responses will formatted as JSON.
