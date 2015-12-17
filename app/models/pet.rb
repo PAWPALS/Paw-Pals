@@ -15,7 +15,6 @@ class Pet < ActiveRecord::Base
   def sync_from_api
     api = AdafruitApi.new
     last_checkin = self.pet_check_ins.last(5)
-    binding.pry
     checkins = api.get_coordinates(last_checkin)
     checkins.each do |checkin|
       self.pet_check_ins.create(longitude: checkin[:long], latitude: checkin[:lat],
