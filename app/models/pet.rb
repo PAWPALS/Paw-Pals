@@ -14,15 +14,19 @@ class Pet < ActiveRecord::Base
 
   def sync_from_api
     api = AdafruitApi.new
-    last_checkin = self.pet_check_ins.order(adafruit_created_at: :desc).first(5)
+    last_checkin = self.pet_check_ins.last(5)
+    binding.pry
     checkins = api.get_coordinates(last_checkin)
     checkins.each do |checkin|
       self.pet_check_ins.create(longitude: checkin[:long], latitude: checkin[:lat],
                                 adafruit_created_at: checkin[:time], adafruit_id: checkin[:id])
     end
-    result = self.pet_check_ins.order(adafruit_created_at: :desc).first
-    adafruit_time_stamp = result.adafruit_created_at
-    self.update(last_checkin_time: adafruit_time_stamp)
+    if self.pet_check_ins.exists?
+      result = self.pet_check_ins.order(adafruit_created_at: :desc).first
+      adafruit_time_stamp = result.adafruit_created_at
+      self.update(last_checkin_time: adafruit_time_stamp)
+    else
+    end
   end
 end
 
