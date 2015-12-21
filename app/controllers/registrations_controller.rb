@@ -1,8 +1,7 @@
 class RegistrationsController < ApplicationController
 
   def create
-    @user = User.new(email: params[:email],
-                     password: params[:password])
+    @user = User.new(user_params)
     if @user.save
       render "create.json.jbuilder", status: :created
     else
@@ -30,5 +29,10 @@ class RegistrationsController < ApplicationController
       render json: { error: "Invalid email (#{params[:email]}) or password." },
         status: :unauthorized
     end
+  end
+
+  private
+  def user_params
+    params.permit(:email, :password)
   end
 end
