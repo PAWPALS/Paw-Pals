@@ -3,9 +3,7 @@ class PetNoticesController < ApplicationController
 
 
   def create 
-    @pet_notice = PetNotice.new(longitude: params[:longitude], 
-                                latitude: params[:latitude],
-                                pet_id: params[:pet_id])
+    @pet_notice = PetNotice.new(pet_notice_params)
     if @pet_notice.save 
       render "create.json.jbuilder", status: :created
     else
@@ -31,4 +29,8 @@ class PetNoticesController < ApplicationController
     render "all_lost_index.json.jbuilder", status: :accepted
   end
 
+  private
+  def pet_notice_params
+    params.permit(:longitude, :latitude, :pet_id)
+  end
 end
