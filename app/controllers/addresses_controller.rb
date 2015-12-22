@@ -26,12 +26,12 @@ class AddressesController < ApplicationController
   end
 
   def show
-     @address = Address.find_by!(params[:address_id])
+     @address = Address.find(params[:id])
     render "show.json.jbuilder", status: :accepted 
   end
 
   def destroy
-    @address = Address.find_by!(params[:address_id])
+    @address = Address.find(params[:id])
      if @address && current_user.id == @address.user_id
       @address.destroy
       render json: {success: "Address delete successful!"}, status: :accepted 
@@ -42,7 +42,7 @@ class AddressesController < ApplicationController
   end
 
   def update
-   @address = Address.find_by!(params[:address_id])
+   @address = Address.find(params[:id])
     if @address && current_user.id == @address.user_id
      @address.update(address: params[:street_address], city: params[:city], state: params[:state], zip: params[:zip])
      render "update.json.jbuilder", status: :accepted 
@@ -50,6 +50,15 @@ class AddressesController < ApplicationController
       render json: { error: "Unable to edit address." },    
             status: :unauthorized   
     end
+  end
+
+  private
+  def address_params   #keep getting Unpermitted parameter: street_address when trying to use?
+    params.permit({address: [:street_address]}, :city, :state, :zip).merge(user_id: current_user.id)
+  end
+
+  def update_params 
+    params.permit({address: [:street_address]}, :city, :state, :zip).merge(user_id: current_user.id)
   end
 end
 
