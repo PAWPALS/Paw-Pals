@@ -23,6 +23,10 @@ RSpec.describe Address, type: :model do
     expect(build(:address, zip: nil)).to_not be_valid 
   end
 
+  # it "is invalid without user id" do
+  #   expect(build(:address, user_id: nil)).to_not be_valid
+  # end
+
   # it "is invalid without without latitude" do
   #   expect(build(:address, latitude: nil)).to_not be_valid 
   # end

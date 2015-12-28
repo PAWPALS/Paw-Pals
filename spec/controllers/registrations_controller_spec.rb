@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe RegistrationsController, type: :controller do
 
-    context "POST #create" do
+    describe "POST #create" do
 
-      
     it "creates user in the database with valid attributes and sends status created" do
       params = FactoryGirl.attributes_for(:user) 
       post :create, params 
@@ -19,8 +18,9 @@ RSpec.describe RegistrationsController, type: :controller do
       expect(User.count).to eq(0)
       expect(response).to have_http_status(422)
     end
+  end
 
-    context "POST #login" do
+    describe "POST #login" do
 
         let(:user) { FactoryGirl.create(:user) }
         before(:each) do
@@ -39,8 +39,14 @@ RSpec.describe RegistrationsController, type: :controller do
         post :login, params
         expect(response).to have_http_status(401)  
      end
+    end
 
-    context "DELETE #destroy" do
+    describe "DELETE #destroy" do
+
+        let(:user) { FactoryGirl.create(:user) }
+        before(:each) do
+        allow(controller).to receive(:current_user).and_return(user) 
+      end
 
        it "allows user to delete account with proper params and sends status ok" do
         params = FactoryGirl.attributes_for(:user)
@@ -54,8 +60,6 @@ RSpec.describe RegistrationsController, type: :controller do
          expect(response).to have_http_status(401) 
       end
    end
-  end
- end
 end
 
 
