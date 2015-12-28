@@ -24,6 +24,9 @@ RSpec.describe Pet, type: :model do
   it {should validate_attachment_content_type(:avatar).
      allowing("image/jpg", "image/jpeg", "image/png", "image/gif")}
 
+  it {should validate_attachment_size(:avatar).
+                  less_than(1.megabytes)}
+
   it {should belong_to(:user)}
 
   it {should have_many(:pet_check_ins)}
