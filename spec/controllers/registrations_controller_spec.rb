@@ -4,7 +4,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
     describe "POST #create" do
 
-    it "creates user in the database with valid attributes and sends status created" do
+    it "creates user" do
       params = FactoryGirl.attributes_for(:user) 
       post :create, params 
       expect(User.count).to eq(1)
@@ -12,11 +12,12 @@ RSpec.describe RegistrationsController, type: :controller do
       expect(response).to render_template("registrations/create.json.jbuilder")
     end
 
-    it "does not create user in the database with invalid attributes and sends status unprocessable" do
+    it "does not create user" do
       params = FactoryGirl.attributes_for(:user, email: nil)
       post :create, params
       expect(User.count).to eq(0)
       expect(response).to have_http_status(422)
+      expect(response.content_type).to eq("application/json")
     end
   end
 
@@ -27,17 +28,19 @@ RSpec.describe RegistrationsController, type: :controller do
         allow(controller).to receive(:current_user).and_return(user) 
       end
 
-      it "allow to user login with proper params and sends status ok" do
+      it "allow to user login" do
         params = FactoryGirl.attributes_for(:user)
         post :login, params
         expect(response).to have_http_status(200)
-        expect(response).to render_template("registrations/login.json.jbuilder")  
+        expect(response).to render_template("registrations/login.json.jbuilder")
+        expect(response.content_type).to eq("application/json")  
       end
 
-      it "does not alllow user to login with improper params and sends status unauthorized" do
+      it "does not allow user to login" do
         params = FactoryGirl.attributes_for(:user, password: nil)
         post :login, params
-        expect(response).to have_http_status(401)  
+        expect(response).to have_http_status(401)
+        expect(response.content_type).to eq("application/json")  
      end
     end
 
@@ -48,16 +51,18 @@ RSpec.describe RegistrationsController, type: :controller do
         allow(controller).to receive(:current_user).and_return(user) 
       end
 
-       it "allows user to delete account with proper params and sends status ok" do
+       it "allows user to be deleted" do
         params = FactoryGirl.attributes_for(:user)
         delete :destroy, params 
-        expect(response).to have_http_status(200) 
+        expect(response).to have_http_status(200)
+        expect(response.content_type).to eq("application/json") 
       end
 
-      it " does not allow user to delete account with improper params and send status unauthorized" do
+      it "does not allow user to be deleted" do
         params = FactoryGirl.attributes_for(:user, password: nil)
         delete :destroy, params 
          expect(response).to have_http_status(401) 
+         expect(response.content_type).to eq("application/json")
       end
    end
 end

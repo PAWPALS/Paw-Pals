@@ -72,14 +72,15 @@ RSpec.describe PetsController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
+  describe "PUT #update" do   # needs work 
 
     before (:each) do
       @pet = FactoryGirl.attributes_for(:pet)
     end
 
     it "allows pet to be updated" do
-      put :update, :pet_id => @pet  # needs work
+      put :update, :pet_id => @pet, :pet => @pet = {:name => "bilbo"}
+      expect(response.content_type).to eq("application/json")
     end
   end
 end
