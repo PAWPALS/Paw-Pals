@@ -27,6 +27,7 @@ RSpec.describe PetsController, type: :controller do
       post :create, params
       expect(Pet.count).to eq(0)
       expect(response).to have_http_status(422)
+      expect(response.content_type).to eq("application/json")
     end
   end
 
@@ -53,6 +54,32 @@ RSpec.describe PetsController, type: :controller do
   describe "GET #show" do
 
     it "creates a resource" do
+      pet = FactoryGirl.attributes_for(:pet, pet_id: 7)
+      get :show, pet
+      # expect(response).to have_http_status(202)
+      expect(response.content_type).to eq("application/json")
+      # expect(response).to render_template("pets/show.json.jbuilder")
+    end
+  end
+
+  describe "DELETE #destroy" do
+
+    it "allows pet to be deleted" do
+      pet = FactoryGirl.attributes_for(:pet, pet_id: 7)
+      delete :destroy, pet
+      # expect(response).to have_http_status(200)
+      expect(response.content_type).to eq("application/json")
+    end
+  end
+
+  describe "PUT #update" do
+
+    before (:each) do
+      @pet = FactoryGirl.attributes_for(:pet)
+    end
+
+    it "allows pet to be updated" do
+      put :update, :pet_id => @pet  # needs work
     end
   end
 end
