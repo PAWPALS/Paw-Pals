@@ -31,6 +31,9 @@ gem 'paperclip', '~> 4.3'
 # Add geocoder to handle location related data 
 gem 'geocoder'
 
+#add support for background jobs
+gem 'delayed_job_active_record'
+
 # Store uploads on Amazon S3 
 gem 'aws-sdk-v1'
 
