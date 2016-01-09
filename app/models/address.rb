@@ -6,6 +6,7 @@ class Address < ActiveRecord::Base
 
   geocoded_by :address_attributes
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed?} 
+  # handle_asynchronously :geocode 
 
   def address_attributes
     [address, city, state, zip].compact.join(',')
